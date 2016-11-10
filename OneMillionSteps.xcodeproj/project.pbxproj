@@ -8,12 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		445AC6381DD522BF00A20A2E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445AC6371DD522BF00A20A2E /* AppDelegate.swift */; };
-		445AC63A1DD522BF00A20A2E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445AC6391DD522BF00A20A2E /* ViewController.swift */; };
 		445AC63D1DD522BF00A20A2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 445AC63B1DD522BF00A20A2E /* Main.storyboard */; };
 		445AC6401DD522BF00A20A2E /* OneMillionSteps.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 445AC63E1DD522BF00A20A2E /* OneMillionSteps.xcdatamodeld */; };
 		445AC6421DD522BF00A20A2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 445AC6411DD522BF00A20A2E /* Assets.xcassets */; };
 		445AC6451DD522BF00A20A2E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 445AC6431DD522BF00A20A2E /* LaunchScreen.storyboard */; };
 		445AC6501DD522BF00A20A2E /* OneMillionStepsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445AC64F1DD522BF00A20A2E /* OneMillionStepsTests.swift */; };
+		445AC65F1DD5238F00A20A2E /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445AC65B1DD5238F00A20A2E /* BluetoothManager.swift */; };
+		445AC6601DD5238F00A20A2E /* Packet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445AC65C1DD5238F00A20A2E /* Packet.swift */; };
+		445AC6611DD5238F00A20A2E /* PairDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445AC65E1DD5238F00A20A2E /* PairDeviceViewController.swift */; };
+		58D84DAF4ACC87F35DF97821 /* libPods-OneMillionSteps.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 410C9E4C3200FF09EEFC5164 /* libPods-OneMillionSteps.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,9 +30,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3639616298843783C744A01F /* Pods_OneMillionStepsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneMillionStepsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		410C9E4C3200FF09EEFC5164 /* libPods-OneMillionSteps.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OneMillionSteps.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		445AC6341DD522BF00A20A2E /* OneMillionSteps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneMillionSteps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		445AC6371DD522BF00A20A2E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		445AC6391DD522BF00A20A2E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		445AC63C1DD522BF00A20A2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		445AC63F1DD522BF00A20A2E /* OneMillionSteps.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OneMillionSteps.xcdatamodel; sourceTree = "<group>"; };
 		445AC6411DD522BF00A20A2E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -38,6 +42,11 @@
 		445AC64B1DD522BF00A20A2E /* OneMillionStepsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OneMillionStepsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		445AC64F1DD522BF00A20A2E /* OneMillionStepsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneMillionStepsTests.swift; sourceTree = "<group>"; };
 		445AC6511DD522BF00A20A2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		445AC65B1DD5238F00A20A2E /* BluetoothManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothManager.swift; sourceTree = "<group>"; };
+		445AC65C1DD5238F00A20A2E /* Packet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Packet.swift; path = ../../BluetoothTest/Packet.swift; sourceTree = "<group>"; };
+		445AC65E1DD5238F00A20A2E /* PairDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PairDeviceViewController.swift; sourceTree = "<group>"; };
+		4862AFC784B0656AC37A9E97 /* Pods-OneMillionSteps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneMillionSteps.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneMillionSteps/Pods-OneMillionSteps.debug.xcconfig"; sourceTree = "<group>"; };
+		D319DDFFB4385D3FD72CDCE4 /* Pods-OneMillionSteps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneMillionSteps.release.xcconfig"; path = "Pods/Target Support Files/Pods-OneMillionSteps/Pods-OneMillionSteps.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58D84DAF4ACC87F35DF97821 /* libPods-OneMillionSteps.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,12 +68,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01543B08DA28ED06DFDB8CD6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3639616298843783C744A01F /* Pods_OneMillionStepsTests.framework */,
+				410C9E4C3200FF09EEFC5164 /* libPods-OneMillionSteps.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		14AC3BA0B88E8368254C5802 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4862AFC784B0656AC37A9E97 /* Pods-OneMillionSteps.debug.xcconfig */,
+				D319DDFFB4385D3FD72CDCE4 /* Pods-OneMillionSteps.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		445AC62B1DD522BF00A20A2E = {
 			isa = PBXGroup;
 			children = (
 				445AC6361DD522BF00A20A2E /* OneMillionSteps */,
 				445AC64E1DD522BF00A20A2E /* OneMillionStepsTests */,
 				445AC6351DD522BF00A20A2E /* Products */,
+				14AC3BA0B88E8368254C5802 /* Pods */,
+				01543B08DA28ED06DFDB8CD6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -79,8 +109,10 @@
 		445AC6361DD522BF00A20A2E /* OneMillionSteps */ = {
 			isa = PBXGroup;
 			children = (
+				445AC65A1DD5238F00A20A2E /* Classes */,
+				445AC65C1DD5238F00A20A2E /* Packet.swift */,
+				445AC65D1DD5238F00A20A2E /* ViewController */,
 				445AC6371DD522BF00A20A2E /* AppDelegate.swift */,
-				445AC6391DD522BF00A20A2E /* ViewController.swift */,
 				445AC63B1DD522BF00A20A2E /* Main.storyboard */,
 				445AC6411DD522BF00A20A2E /* Assets.xcassets */,
 				445AC6431DD522BF00A20A2E /* LaunchScreen.storyboard */,
@@ -99,6 +131,24 @@
 			path = OneMillionStepsTests;
 			sourceTree = "<group>";
 		};
+		445AC65A1DD5238F00A20A2E /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				445AC65B1DD5238F00A20A2E /* BluetoothManager.swift */,
+			);
+			name = Classes;
+			path = ../../BluetoothTest/Classes;
+			sourceTree = "<group>";
+		};
+		445AC65D1DD5238F00A20A2E /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				445AC65E1DD5238F00A20A2E /* PairDeviceViewController.swift */,
+			);
+			name = ViewController;
+			path = ../../BluetoothTest/ViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -106,9 +156,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 445AC6541DD522BF00A20A2E /* Build configuration list for PBXNativeTarget "OneMillionSteps" */;
 			buildPhases = (
+				CA787FD5A98B0473C5C51DFE /* [CP] Check Pods Manifest.lock */,
 				445AC6301DD522BF00A20A2E /* Sources */,
 				445AC6311DD522BF00A20A2E /* Frameworks */,
 				445AC6321DD522BF00A20A2E /* Resources */,
+				E7C651E7171CC04FB25FC0DF /* [CP] Embed Pods Frameworks */,
+				F736AC9CF1DA35743D0D8B32 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -199,14 +252,64 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		CA787FD5A98B0473C5C51DFE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E7C651E7171CC04FB25FC0DF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OneMillionSteps/Pods-OneMillionSteps-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F736AC9CF1DA35743D0D8B32 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OneMillionSteps/Pods-OneMillionSteps-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		445AC6301DD522BF00A20A2E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				445AC63A1DD522BF00A20A2E /* ViewController.swift in Sources */,
 				445AC6401DD522BF00A20A2E /* OneMillionSteps.xcdatamodeld in Sources */,
+				445AC6611DD5238F00A20A2E /* PairDeviceViewController.swift in Sources */,
+				445AC65F1DD5238F00A20A2E /* BluetoothManager.swift in Sources */,
 				445AC6381DD522BF00A20A2E /* AppDelegate.swift in Sources */,
+				445AC6601DD5238F00A20A2E /* Packet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +444,7 @@
 		};
 		445AC6551DD522BF00A20A2E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4862AFC784B0656AC37A9E97 /* Pods-OneMillionSteps.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = D43YCHWY3Q;
@@ -354,6 +458,7 @@
 		};
 		445AC6561DD522BF00A20A2E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D319DDFFB4385D3FD72CDCE4 /* Pods-OneMillionSteps.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = D43YCHWY3Q;
@@ -414,6 +519,7 @@
 				445AC6561DD522BF00A20A2E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		445AC6571DD522BF00A20A2E /* Build configuration list for PBXNativeTarget "OneMillionStepsTests" */ = {
 			isa = XCConfigurationList;
@@ -422,6 +528,7 @@
 				445AC6591DD522BF00A20A2E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
