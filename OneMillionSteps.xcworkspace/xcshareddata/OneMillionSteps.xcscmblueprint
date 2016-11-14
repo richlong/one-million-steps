@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "B1599BBC62B31DB8C0FD9405C5834C225174DAB7",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "B1599BBC62B31DB8C0FD9405C5834C225174DAB7" : 9223372036854775807,
+    "67E028636148123C1423F08607B1B19AEF5A2073" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "0BC9DDF0-286F-410F-A9C8-B943C4197DC0",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "B1599BBC62B31DB8C0FD9405C5834C225174DAB7" : "OneMillionSteps\/",
+    "67E028636148123C1423F08607B1B19AEF5A2073" : "BluetoothTest\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "OneMillionSteps",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "OneMillionSteps.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/richlong\/Bluetooth.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "67E028636148123C1423F08607B1B19AEF5A2073"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/richlong\/one-million-steps.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B1599BBC62B31DB8C0FD9405C5834C225174DAB7"
+    }
+  ]
+}

@@ -12,7 +12,7 @@
         <!--Pair Device View Controller-->
         <scene sceneID="lel-Ym-IcG">
             <objects>
-                <viewController id="1xE-OF-Tmj" customClass="PairDeviceViewController" customModule="BluetoothTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="1xE-OF-Tmj" customClass="PairDeviceViewController" customModule="OneMillionSteps" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xZa-hM-cDv"/>
                         <viewControllerLayoutGuide type="bottom" id="mGK-Xw-jAW"/>
@@ -89,9 +89,9 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vh4-z1-QOx">
-                                <rect key="frame" x="289" y="20" width="81" height="30"/>
+                                <rect key="frame" x="282" y="20" width="88" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Debug"/>
+                                <state key="normal" title="Reset device"/>
                                 <connections>
                                     <action selector="debugAction:" destination="1xE-OF-Tmj" eventType="touchUpInside" id="HFT-x4-c1o"/>
                                 </connections>
