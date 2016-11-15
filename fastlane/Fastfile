@@ -32,7 +32,10 @@ platform :ios do
   lane :beta do
 
     gym(scheme: "OneMillionSteps") # Build your app - more options available
-    pilot(skip_waiting_for_build_processing: true)
+    pilot(
+    	skip_waiting_for_build_processing: true,
+      	team_id: "118456196"
+      	)
     increment_build_number
     commit_version_bump
 
@@ -47,6 +50,16 @@ platform :ios do
     gym # Build your app - more options available
     deliver(force: true)
     # frameit
+  end
+
+	desc "Increment build number"
+  desc "This will also make sure the profile is up to date"
+  lane :inc_build do
+    # match(type: "appstore") # more information: https://codesigning.guide
+
+    increment_build_number(build_number: '5')
+    # sh "your_script.sh"
+    # You can also use other beta testing services here (run `fastlane actions`)
   end
 
   # You can define as many lanes as you want
