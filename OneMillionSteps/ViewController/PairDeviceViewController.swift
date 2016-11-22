@@ -8,21 +8,23 @@
 
 import UIKit
 import CoreBluetooth
-import FLEX
+//import FLEX
 
 protocol PedometerDelegate {
     var pedometerReady:Bool {get set}
     func deviceFound(name:String)
     func deviceReady()
     func userInfoRecieved(userInfo:PedometerUserInfo)
-    func monthStepsRecieved(steps:[Int])
-
+    func monthStepsRecieved(steps:[DaySteps])
+    func dayRecieved(steps: Int, day:Int)
+    func deviceTimeout()
 }
 
 class PairDeviceViewController: UIViewController, PedometerDelegate {
-
+    
+    
     internal var pedometerReady: Bool = false
-
+    
     let bluetoothManager = BluetoothManager()
     
     @IBOutlet weak var searchButton: UIButton!
@@ -51,30 +53,41 @@ class PairDeviceViewController: UIViewController, PedometerDelegate {
             deviceId.adjustsFontSizeToFitWidth = true
         }
         pairingLabel.text = "Pairing..."
-
+        
     }
     
     func userInfoRecieved(userInfo:PedometerUserInfo) {
         userInfoLabel.text = "Age: \(userInfo.age) Height: \(userInfo.height) Weight: \(userInfo.weight) Stride: \(userInfo.stridgeLength)"
     }
     
-    internal func monthStepsRecieved(steps: [Int]) {
+    internal func monthStepsRecieved(steps: [DaySteps]) {
         
         var str = ""
         var c = 0
-        for int in steps {
-            str.append("\nDay: \(c) Steps: \(int)")
+        for day in steps {
+            str.append("\nDay: \(day.date) Steps: \(day.steps)")
             c += 1
         }
         
         monthStepsTextView.text = str
         
     }
-
+    
     internal func deviceReady() {
         pairingLabel.text = "Paired"
     }
-
+    
+    
+    internal func dayRecieved(steps: Int, day:Int) {
+        monthStepsTextView.text.append("\nDay: \(day) Steps: \(steps)")
+    }
+    
+    
+    internal func deviceTimeout() {
+        statusLabel.text = "Device Timeout - search again"
+    }
+    
+    
     
     @IBAction func searchButtonAction(_ sender: Any) {
         bluetoothManager.startScan()
@@ -99,22 +112,23 @@ class PairDeviceViewController: UIViewController, PedometerDelegate {
         else {
             monthStepsTextView.text = "Device not ready"
         }
-
+        
     }
-
+    
     @IBAction func getMonthStepsAction(_ sender: Any) {
         if pedometerReady &&
             !bluetoothManager.isRecievingStepData {
             bluetoothManager.get30DaysData()
             monthStepsTextView.text = "Calculating, can take a while."
-
+            
         }
         else {
             monthStepsTextView.text = "Device not ready"
         }
     }
-
+    
     @IBAction func debugAction(_ sender: Any) {
-        FLEXManager.shared().showExplorer()
+        //        FLEXManager.shared().showExplorer()
+        bluetoothManager.reset()
     }
 }

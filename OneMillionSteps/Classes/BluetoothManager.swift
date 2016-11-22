@@ -19,6 +19,12 @@ enum HexPacketPrefix:UInt8 {
     case FactoryReset = 0x12
     case GetCurrentActivityData = 0x48
     case StepError = 0xC3
+    case GetTotalActivityForDay = 0x07
+}
+
+struct DaySteps {
+    let date:String
+    let steps:Int
 }
 
 class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
@@ -38,10 +44,12 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
     var currentDayStepCount:Int = 0
     var stepPacketCount:Int = 0
     var currentDay:Int = 0
-    var monthSteps:[Int] = []
+    var monthSteps:[DaySteps] = []
     var isRecievingStepData = false
     var currentDayRequestTotal = 0
     var isGettingSingleDay = false
+    var timeOut:Timer = Timer()
+    
     func startScan() {
         centralManager = CBCentralManager(delegate: self, queue: nil)
     }
@@ -96,7 +104,7 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
             else {
                 delegate?.deviceFound(name: "Unable to find device")
             }
-
+            
         }
         else {
             print("Cannot connect to peripheral \(peripheral)")
@@ -185,7 +193,7 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
             print("Error discovering services: \(error!.localizedDescription)")
             return
         }
-
+        
         let data = characteristic.value!
         let hexArray:[UInt8] = data.withUnsafeBytes {
             [UInt8](UnsafeBufferPointer(start: $0, count: data.count))
@@ -199,13 +207,18 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
             return
         }
     }
-
+    
     //MARK: Clean up methods
     
     /** Call this when things either go wrong, or you're done with the connection.
      *  This cancels any subscriptions if there are any, or straight disconnects if not.
      *  (didUpdateNotificationStateForCharacteristic will cancel the connection if a subscription is involved)
      */
+    
+    func reset() {
+        cleanup()
+    }
+    
     private func cleanup() {
         // Don't do anything if we're not connected
         // self.discoveredPeripheral.isConnected is deprecated
@@ -234,6 +247,7 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
                 }
             }
         }
+        cancelPeripheralConnection()
     }
     
     private func cancelPeripheralConnection() {
@@ -256,7 +270,7 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
         
         switch firstByte {
         case HexPacketPrefix.DaysData.rawValue:
-            parseDaysData(packet: packet)
+            parseDaysDetailedData(packet: packet)
             break
         case HexPacketPrefix.GetTime.rawValue:
             parseDate(packet: packet)
@@ -274,7 +288,10 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
             print("StepError: \(packet)")
             stepPacketCount += 1
             break
-
+        case HexPacketPrefix.GetTotalActivityForDay.rawValue:
+            parseDaysData(packet: packet)
+            break
+            
         default:
             print("Packet unknown: \(packet)")
         }
@@ -286,7 +303,7 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
     func startRealtimeTracking() {
         sendPacketToDevice(firstBytes:  [HexPacketPrefix.RealTimeStepMeter.rawValue])
     }
-
+    
     //MARK: Todays data
     
     func get30DaysData() {
@@ -316,65 +333,130 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
     func getDaysData(day:Int) {
         //Day 0 = today, 1 = yesterday etc up to 30.
         print("Getting day: \(day)")
-        sendPacketToDevice(firstBytes:  [HexPacketPrefix.DaysData.rawValue, UInt8(day)])
+        sendPacketToDevice(firstBytes:  [HexPacketPrefix.GetTotalActivityForDay.rawValue, UInt8(day)])
+        restartTimer()
     }
     
-    func parseDaysData(packet:[UInt8]) {
+    func restartTimer() {
+        //For timeOut
+        print("Time reset")
+        timeOut.invalidate()
+        // start the timer
+        timeOut = Timer.scheduledTimer(timeInterval: 15.0,
+                                       target: self,
+                                       selector: #selector(deviceTimeout),
+                                       userInfo: nil,
+                                       repeats: false)
+    }
     
-        //Each day's data contains 96 packets.
-        stepPacketCount += 1
+    func parseDaysDetailedData(packet:[UInt8]) {
         
-        //Check if finished
+        //        //Each day's data contains 96 packets.
+        //        stepPacketCount += 1
+        //
+        //        //Check if finished
+        //        if currentDay > currentDayRequestTotal {
+        //            getStepsFinished()
+        //            return
+        //        }
+        //
+        //        if (packet[1] == 0xFF) {
+        //            //Invalid data
+        //            print("Day \(currentDay) data invalid")
+        //            currentDay += 1
+        //            monthSteps.append(0)
+        //            delegate?.dayRecieved(steps: -1, day: currentDay)
+        //            getDaysData(day: currentDay)
+        //            currentDayStepCount = 0
+        //            return
+        //        }
+        //
+        //        // 0x00 = Activity data which is what we want
+        //        if (packet[6] == 0x00) {
+        //            let steps = Int(packet[9])+Int(packet[10])*256
+        //            currentDayStepCount += steps
+        //        }
+        //        // 0xff = Sleep data
+        //        else if (packet[6] == 0xff) {
+        //            //Not req
+        //        }
+        //
+        //        //Each step req returns 96 packets per day
+        //        if stepPacketCount == 96 {
+        //            //All step packets recieved
+        //            print("Current day steps: \(currentDayStepCount)")
+        //            stepPacketCount = 0
+        //            monthSteps.append(currentDayStepCount)
+        //            delegate?.dayRecieved(steps: currentDayStepCount, day: currentDay)
+        //            currentDayStepCount = 0
+        //            if isGettingSingleDay {
+        //                getStepsFinished()
+        //            }
+        //            else {
+        //                currentDay += 1
+        //                getDaysData(day: currentDay)
+        //            }
+        //        }
+        
+    }
+    
+    func getStepsFinished() {
+        timeOut.invalidate()
+        isRecievingStepData = false
+        isGettingSingleDay = false
+        //        print("Month array: \(monthSteps)")
+        delegate?.monthStepsRecieved(steps: monthSteps)
+        
+    }
+    
+    //MARK: Total activity
+    
+    func parseDaysData(packet:[UInt8]) {
+        
+        print("TotalActivity: \(packet)")
+        
         if currentDay > currentDayRequestTotal {
             getStepsFinished()
             return
         }
         
-        if (packet[1] == 0xFF) {
-            //Invalid data
-            print("Day \(currentDay) data invalid")
-            currentDay += 1
-            monthSteps.append(0)
-            getDaysData(day: currentDay)
-            return
-        }
-
-        // 0x00 = Activity data which is what we want
-        if (packet[6] == 0x00) {
-            let steps = Int(packet[9])+Int(packet[10])*256
-            currentDayStepCount += steps
-        }
-        // 0xff = Sleep data
-        else if (packet[6] == 0xff) {
-            //Not req
-        }
         
-        //Each step req returns 96 packets per day
-        if stepPacketCount == 96 {
-            //All step packets recieved
-            print("Current day steps: \(currentDayStepCount)")
-            stepPacketCount = 0
-            monthSteps.append(currentDayStepCount)
-            
-            if isGettingSingleDay {
-                getStepsFinished()
+        if (packet[1] == 0) { //0 = Steps
+            if (packet[3] != 0 && packet[4] != 0 && packet[5] != 0) {
+                
+                let StepPacket1 = Int(packet[6]) * 256 * 256
+                let StepPacket2 = Int(packet[7]) * 256
+                let StepPacket3 = Int(packet[8])
+                let totalSteps = StepPacket1 + StepPacket2 + StepPacket3
+                
+                let y = String(format:"%2X", packet[3])
+                let m = String(format:"%2X", packet[4])
+                let d = String(format:"%2X", packet[5])
+                
+                let date = "\(d)/\(m)/\(y)"
+                
+                let day = DaySteps(date: date, steps: totalSteps)
+                
+                print("Date: \(day.date) steps: \(day.steps)")
+                monthSteps.append(day)
+                
             }
             else {
-                currentDay += 1
-                getDaysData(day: currentDay)
+                //No day data
+                print("Current day: \(currentDay) no step data")
+                monthSteps.append(DaySteps(date: "0", steps: 0))
             }
+            currentDay += 1
+            getDaysData(day: currentDay)
+            
         }
-        
+        else if (packet[1] == 1) { //1 = Walking distance
+            
+        }
     }
     
-    func getStepsFinished() {
-        isRecievingStepData = false
-        isGettingSingleDay = false
-        print("Month array: \(monthSteps)")
-        delegate?.monthStepsRecieved(steps: monthSteps)
-
-    }
-
+    
+    
     //MARK: Device time
     
     /*
@@ -386,7 +468,7 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
      */
     
     func setDeviceTime() {
-    
+        
         let date = Date()
         print("Setting device date to: \(date)")
         
@@ -451,8 +533,8 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
         print("Setting User details: \(packetArray)")
         sendPacketToDevice(firstBytes:packetArray)
     }
-
-
+    
+    
     func getUserDetails() {
         sendPacketToDevice(firstBytes:  [HexPacketPrefix.GetUserDetails.rawValue])
     }
@@ -466,7 +548,7 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
             delegate?.userInfoRecieved(userInfo: user)
         }
         
-//        print("parseUserDetails\(packetArray)")
+        //        print("parseUserDetails\(packetArray)")
     }
     
     //MARK: Current activitiy data
@@ -474,13 +556,20 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
     func getCurrentActivityData() {
         sendPacketToDevice(firstBytes:  [HexPacketPrefix.GetCurrentActivityData.rawValue])
     }
-
+    
     
     //MARK:Factory Reset
     
     func factoryResetDevice() {
         print("Factory reset device...")
         sendPacketToDevice(firstBytes:  [HexPacketPrefix.FactoryReset.rawValue])
+    }
+    
+    //MARK: Timeout
+    
+    func deviceTimeout() {
+        print("Timeout")
+        delegate?.deviceTimeout()
     }
     
 }

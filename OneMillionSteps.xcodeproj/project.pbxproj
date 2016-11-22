@@ -13,9 +13,9 @@
 		445AC6421DD522BF00A20A2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 445AC6411DD522BF00A20A2E /* Assets.xcassets */; };
 		445AC6451DD522BF00A20A2E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 445AC6431DD522BF00A20A2E /* LaunchScreen.storyboard */; };
 		445AC6501DD522BF00A20A2E /* OneMillionStepsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445AC64F1DD522BF00A20A2E /* OneMillionStepsTests.swift */; };
-		445AC65F1DD5238F00A20A2E /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445AC65B1DD5238F00A20A2E /* BluetoothManager.swift */; };
 		445AC6601DD5238F00A20A2E /* Packet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445AC65C1DD5238F00A20A2E /* Packet.swift */; };
-		445AC6611DD5238F00A20A2E /* PairDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445AC65E1DD5238F00A20A2E /* PairDeviceViewController.swift */; };
+		44D056C51DE4E29400ECF2CE /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D056C41DE4E29400ECF2CE /* BluetoothManager.swift */; };
+		44D056C71DE4E2D200ECF2CE /* PairDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D056C61DE4E2D200ECF2CE /* PairDeviceViewController.swift */; };
 		44ECDC6E1DDA4BED0067E71F /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = 44ECDC5A1DDA4BED0067E71F /* Contents.json */; };
 		44ECDC6F1DDA4BED0067E71F /* Icon-App-20x20@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44ECDC5B1DDA4BED0067E71F /* Icon-App-20x20@1x.png */; };
 		44ECDC701DDA4BED0067E71F /* Icon-App-20x20@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44ECDC5C1DDA4BED0067E71F /* Icon-App-20x20@2x.png */; };
@@ -59,9 +59,9 @@
 		445AC64B1DD522BF00A20A2E /* OneMillionStepsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OneMillionStepsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		445AC64F1DD522BF00A20A2E /* OneMillionStepsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneMillionStepsTests.swift; sourceTree = "<group>"; };
 		445AC6511DD522BF00A20A2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		445AC65B1DD5238F00A20A2E /* BluetoothManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothManager.swift; sourceTree = "<group>"; };
 		445AC65C1DD5238F00A20A2E /* Packet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Packet.swift; path = ../../BluetoothTest/Packet.swift; sourceTree = "<group>"; };
-		445AC65E1DD5238F00A20A2E /* PairDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PairDeviceViewController.swift; sourceTree = "<group>"; };
+		44D056C41DE4E29400ECF2CE /* BluetoothManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BluetoothManager.swift; path = OneMillionSteps/Classes/BluetoothManager.swift; sourceTree = SOURCE_ROOT; };
+		44D056C61DE4E2D200ECF2CE /* PairDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PairDeviceViewController.swift; path = OneMillionSteps/ViewController/PairDeviceViewController.swift; sourceTree = SOURCE_ROOT; };
 		44ECDC5A1DDA4BED0067E71F /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Contents.json; sourceTree = "<group>"; };
 		44ECDC5B1DDA4BED0067E71F /* Icon-App-20x20@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-20x20@1x.png"; sourceTree = "<group>"; };
 		44ECDC5C1DDA4BED0067E71F /* Icon-App-20x20@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-20x20@2x.png"; sourceTree = "<group>"; };
@@ -169,7 +169,7 @@
 		445AC65A1DD5238F00A20A2E /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				445AC65B1DD5238F00A20A2E /* BluetoothManager.swift */,
+				44D056C41DE4E29400ECF2CE /* BluetoothManager.swift */,
 			);
 			name = Classes;
 			path = ../../BluetoothTest/Classes;
@@ -178,7 +178,7 @@
 		445AC65D1DD5238F00A20A2E /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				445AC65E1DD5238F00A20A2E /* PairDeviceViewController.swift */,
+				44D056C61DE4E2D200ECF2CE /* PairDeviceViewController.swift */,
 			);
 			name = ViewController;
 			path = ../../BluetoothTest/ViewController;
@@ -383,9 +383,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				445AC6401DD522BF00A20A2E /* OneMillionSteps.xcdatamodeld in Sources */,
-				445AC6611DD5238F00A20A2E /* PairDeviceViewController.swift in Sources */,
-				445AC65F1DD5238F00A20A2E /* BluetoothManager.swift in Sources */,
 				445AC6381DD522BF00A20A2E /* AppDelegate.swift in Sources */,
+				44D056C51DE4E29400ECF2CE /* BluetoothManager.swift in Sources */,
+				44D056C71DE4E2D200ECF2CE /* PairDeviceViewController.swift in Sources */,
 				445AC6601DD5238F00A20A2E /* Packet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
