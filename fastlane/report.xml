@@ -3,17 +3,34 @@
   <testsuite name="fastlane.lanes">
     
       
-      <testcase classname="fastlane.lanes" name="0: Verifying required fastlane version" time="0.000557">
+      <testcase classname="fastlane.lanes" name="0: Verifying required fastlane version" time="0.000504">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="1: default_platform" time="0.000249">
+      <testcase classname="fastlane.lanes" name="1: default_platform" time="0.00021">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="2: increment_build_number" time="0.909067">
+      <testcase classname="fastlane.lanes" name="2: gym" time="54.789857">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="3: pilot" time="85.238129">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="4: increment_build_number" time="1.189888">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="5: commit_version_bump" time="0.220107">
+        
+          <failure message="/Users/richlong/.rvm/gems/ruby-2.3.1@global/gems/fastlane-1.110.0/lib/fastlane/actions/actions_helper.rb:33:in `execute_action'&#10;/Users/richlong/.rvm/gems/ruby-2.3.1@global/gems/fastlane-1.110.0/lib/fastlane/runner.rb:187:in `block in execute_action'&#10;/Users/richlong/.rvm/gems/ruby-2.3.1@global/gems/fastlane-1.110.0/lib/fastlane/runner.rb:186:in `chdir'&#10;/Users/richlong/.rvm/gems/ruby-2.3.1@global/gems/fastlane-1.110.0/lib/fastlane/runner.rb:186:in `execute_action'&#10;/Users/richlong/.rvm/gems/ruby-2.3.1@global/gems/fastlane-1.110.0/lib/fastlane/runner.rb:112:in `trigger_action_by_name'&#10;/Users/richlong/.rvm/gems/ruby-2.3.1@global/gems/fastlane-1.110.0/lib/fastlane/fast_file.rb:146:in `method_missing'&#10;Fastfile:40:in `block (2 levels) in parsing_binding'&#10;/Users/richlong/.rvm/gems/ruby-2.3.1@global/gems/fastlane-1.110.0/lib/fastlane/lane.rb:33:in `call'&#10;/Users/richlong/.rvm/gems/ruby-2.3.1@global/gems/fastlane-1.110.0/lib/fastlane/runner.rb:49:in `block in execute'&#10;/Users/richlong/.rvm/gems/ruby-2.3.1@global/gems/fastlane-1.110.0/lib/fastlane/runner.rb:45:in `chdir'&#10;/Users/richlong/.rvm/gems/ruby-2.3.1@global/gems/fastlane-1.110.0/lib/fastlane/runner.rb:45:in `execute'&#10;/Users/richlong/.rvm/gems/ruby-2.3.1@global/gems/fastlane-1.110.0/lib/fastlane/lane_manager.rb:52:in `cruise_lane'&#10;/Users/richlong/.rvm/gems/ruby-2.3.1@global/gems/fastlane-1.110.0/lib/fastlane/command_line_handler.rb:30:in `handle'&#10;/Users/richlong/.rvm/gems/ruby-2.3.1@global/gems/fastlane-1.110.0/lib/fastlane/commands_generator.rb:95:in `block (2 levels) in run'&#10;/Users/richlong/.rvm/gems/ruby-2.3.1@global/gems/commander-4.4.0/lib/commander/command.rb:178:in `call'&#10;/Users/richlong/.rvm/gems/ruby-2.3.1@global/gems/commander-4.4.0/lib/commander/command.rb:153:in `run'&#10;/Users/richlong/.rvm/gems/ruby-2.3.1@global/gems/commander-4.4.0/lib/commander/runner.rb:444:in `run_active_command'&#10;/Users/richlong/.rvm/gems/ruby-2.3.1@global/gems/fastlane_core-0.57.0/lib/fastlane_core/ui/fastlane_runner.rb:38:in `run!'&#10;/Users/richlong/.rvm/gems/ruby-2.3.1@global/gems/commander-4.4.0/lib/commander/delegates.rb:15:in `run!'&#10;/Users/richlong/.rvm/gems/ruby-2.3.1@global/gems/fastlane-1.110.0/lib/fastlane/commands_generator.rb:292:in `run'&#10;/Users/richlong/.rvm/gems/ruby-2.3.1@global/gems/fastlane-1.110.0/lib/fastlane/commands_generator.rb:36:in `start'&#10;/Users/richlong/.rvm/gems/ruby-2.3.1@global/gems/fastlane-1.110.0/lib/fastlane/cli_tools_distributor.rb:58:in `take_off'&#10;/Users/richlong/.rvm/gems/ruby-2.3.1@global/gems/fastlane-1.110.0/bin/fastlane:5:in `&lt;top (required)&gt;'&#10;/Users/richlong/.rvm/rubies/ruby-2.3.1/bin/fastlane:23:in `load'&#10;/Users/richlong/.rvm/rubies/ruby-2.3.1/bin/fastlane:23:in `&lt;main&gt;'&#10;/Users/richlong/.rvm/gems/ruby-2.3.1@global/bin/ruby_executable_hooks:15:in `eval'&#10;/Users/richlong/.rvm/gems/ruby-2.3.1@global/bin/ruby_executable_hooks:15:in `&lt;main&gt;'&#10;&#10;Found unexpected uncommited changes in the working directory. Expected these files to have &#10;changed: &#10;OneMillionSteps.xcodeproj/project.pbxproj&#10;OneMillionSteps/Info.plist&#10;OneMillionStepsTests/Info.plist.&#10;But found these actual changes: &#10;OneMillionSteps.app.dSYM.zip&#10;OneMillionSteps.ipa&#10;OneMillionSteps.xcodeproj/project.pbxproj&#10;OneMillionSteps/Info.plist&#10;OneMillionStepsTests/Info.plist.&#10;Make sure you have cleaned up the build artifacts and &#10;are only left with the changed version files at this stage in your lane, and don't touch the &#10;working directory while your lane is running. You can also use the :force option to bypass this &#10;check, and always commit a version bump regardless of the state of the working directory." />
         
       </testcase>
     

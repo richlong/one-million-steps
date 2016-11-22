@@ -37,7 +37,6 @@ platform :ios do
       	team_id: "118456196"
       	)
     increment_build_number
-    commit_version_bump
 
     # sh "your_script.sh"
     # You can also use other beta testing services here (run `fastlane actions`)
