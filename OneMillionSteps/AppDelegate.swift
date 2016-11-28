@@ -8,6 +8,9 @@
 
 import UIKit
 import CoreData
+import FacebookLogin
+import FacebookCore
+import FBSDKCoreKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,7 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+
+        let mainView = UIStoryboard(name: "UserRegistration", bundle: nil)
+        self.window!.rootViewController = mainView.instantiateInitialViewController()
+
+        
         return true
     }
 
@@ -44,7 +51,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.saveContext()
     }
 
-    // MARK: - Core Data stack
+    @available(iOS 9.0, *)
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        return FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
+    }
+// MARK: - Core Data stack
 
     lazy var persistentContainer: NSPersistentContainer = {
         /*

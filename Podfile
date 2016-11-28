@@ -2,10 +2,15 @@
 # platform :ios, '9.0'
 
 
+use_frameworks!
 
 target 'OneMillionSteps' do
     
-#    pod 'FLEX', '~> 2.0'   
+#    pod 'FLEX', '~> 2.0'
+
+    pod 'FacebookCore'
+    pod 'FacebookLogin'
+#    pod 'RealmSwift'
 
 end
 
