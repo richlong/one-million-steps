@@ -10,7 +10,9 @@ target 'OneMillionSteps' do
 
     pod 'FacebookCore'
     pod 'FacebookLogin'
-#    pod 'RealmSwift'
+    pod 'RealmSwift'
+    pod 'SwiftSpinner'
+    pod 'SwiftValidator', :git => 'https://github.com/jpotts18/SwiftValidator.git', :branch => 'master'
 
 end
 

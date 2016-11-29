@@ -24,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window!.rootViewController = mainView.instantiateInitialViewController()
 
         
+        
         return true
     }
 

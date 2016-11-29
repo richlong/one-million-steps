@@ -16,6 +16,9 @@
 		445AC6601DD5238F00A20A2E /* Packet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445AC65C1DD5238F00A20A2E /* Packet.swift */; };
 		44AA8FBB1DECC07F00358068 /* UserRegistration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44AA8FB91DECC07F00358068 /* UserRegistration.storyboard */; };
 		44AA8FBD1DECC0AD00358068 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AA8FBC1DECC0AD00358068 /* LoginViewController.swift */; };
+		44AA8FBF1DEE079900358068 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AA8FBE1DEE079900358068 /* LoginViewModel.swift */; };
+		44AA8FC31DEE0C6500358068 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AA8FC21DEE0C6500358068 /* User.swift */; };
+		44AA8FC51DEE114100358068 /* EnterUserDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AA8FC41DEE114100358068 /* EnterUserDetailsViewController.swift */; };
 		44D056C51DE4E29400ECF2CE /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D056C41DE4E29400ECF2CE /* BluetoothManager.swift */; };
 		44D056C71DE4E2D200ECF2CE /* PairDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D056C61DE4E2D200ECF2CE /* PairDeviceViewController.swift */; };
 		44ECDC6E1DDA4BED0067E71F /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = 44ECDC5A1DDA4BED0067E71F /* Contents.json */; };
@@ -62,7 +65,10 @@
 		445AC6511DD522BF00A20A2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		445AC65C1DD5238F00A20A2E /* Packet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Packet.swift; path = ../Packet.swift; sourceTree = "<group>"; };
 		44AA8FBA1DECC07F00358068 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/UserRegistration.storyboard; sourceTree = "<group>"; };
-		44AA8FBC1DECC0AD00358068 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = ViewController/LoginViewController.swift; sourceTree = "<group>"; };
+		44AA8FBC1DECC0AD00358068 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = ../../OneMillionSteps/OneMillionSteps/ViewController/LoginViewController.swift; sourceTree = "<group>"; };
+		44AA8FBE1DEE079900358068 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewModel.swift; path = ../ViewModel/LoginViewModel.swift; sourceTree = "<group>"; };
+		44AA8FC21DEE0C6500358068 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = ../User.swift; sourceTree = "<group>"; };
+		44AA8FC41DEE114100358068 /* EnterUserDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterUserDetailsViewController.swift; sourceTree = "<group>"; };
 		44D056C41DE4E29400ECF2CE /* BluetoothManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BluetoothManager.swift; path = OneMillionSteps/Classes/BluetoothManager.swift; sourceTree = SOURCE_ROOT; };
 		44D056C61DE4E2D200ECF2CE /* PairDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PairDeviceViewController.swift; path = OneMillionSteps/ViewController/PairDeviceViewController.swift; sourceTree = SOURCE_ROOT; };
 		44ECDC5A1DDA4BED0067E71F /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Contents.json; sourceTree = "<group>"; };
@@ -147,13 +153,14 @@
 		445AC6361DD522BF00A20A2E /* OneMillionSteps */ = {
 			isa = PBXGroup;
 			children = (
+				44AA8FC21DEE0C6500358068 /* User.swift */,
 				445AC65A1DD5238F00A20A2E /* Classes */,
 				445AC65D1DD5238F00A20A2E /* ViewController */,
+				44AA8FC11DEE07A700358068 /* ViewModel */,
 				445AC6371DD522BF00A20A2E /* AppDelegate.swift */,
 				445AC6411DD522BF00A20A2E /* Assets.xcassets */,
 				445AC63B1DD522BF00A20A2E /* Main.storyboard */,
 				445AC6431DD522BF00A20A2E /* LaunchScreen.storyboard */,
-				44AA8FBC1DECC0AD00358068 /* LoginViewController.swift */,
 				44AA8FB91DECC07F00358068 /* UserRegistration.storyboard */,
 				445AC6461DD522BF00A20A2E /* Info.plist */,
 				445AC63E1DD522BF00A20A2E /* OneMillionSteps.xcdatamodeld */,
@@ -184,9 +191,20 @@
 		445AC65D1DD5238F00A20A2E /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				44AA8FBC1DECC0AD00358068 /* LoginViewController.swift */,
+				44AA8FC41DEE114100358068 /* EnterUserDetailsViewController.swift */,
 				44D056C61DE4E2D200ECF2CE /* PairDeviceViewController.swift */,
 			);
 			name = ViewController;
+			path = ../../BluetoothTest/ViewController;
+			sourceTree = "<group>";
+		};
+		44AA8FC11DEE07A700358068 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				44AA8FBE1DEE079900358068 /* LoginViewModel.swift */,
+			);
+			name = ViewModel;
 			path = ../../BluetoothTest/ViewController;
 			sourceTree = "<group>";
 		};
@@ -393,8 +411,11 @@
 				445AC6401DD522BF00A20A2E /* OneMillionSteps.xcdatamodeld in Sources */,
 				445AC6381DD522BF00A20A2E /* AppDelegate.swift in Sources */,
 				44D056C51DE4E29400ECF2CE /* BluetoothManager.swift in Sources */,
+				44AA8FC31DEE0C6500358068 /* User.swift in Sources */,
 				44D056C71DE4E2D200ECF2CE /* PairDeviceViewController.swift in Sources */,
 				445AC6601DD5238F00A20A2E /* Packet.swift in Sources */,
+				44AA8FBF1DEE079900358068 /* LoginViewModel.swift in Sources */,
+				44AA8FC51DEE114100358068 /* EnterUserDetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

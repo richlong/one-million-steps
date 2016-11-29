@@ -17,10 +17,30 @@ PODS:
     - Bolts (~> 1.7)
   - FBSDKLoginKit (4.16.1):
     - FBSDKCoreKit
+  - Realm (2.0.2):
+    - Realm/Headers (= 2.0.2)
+  - Realm/Headers (2.0.2)
+  - RealmSwift (2.0.2):
+    - Realm (= 2.0.2)
+  - SwiftSpinner (1.0.2)
+  - SwiftValidator (4.0.0)
 
 DEPENDENCIES:
   - FacebookCore
   - FacebookLogin
+  - RealmSwift
+  - SwiftSpinner
+  - SwiftValidator (from `https://github.com/jpotts18/SwiftValidator.git`, branch `master`)
+
+EXTERNAL SOURCES:
+  SwiftValidator:
+    :branch: master
+    :git: https://github.com/jpotts18/SwiftValidator.git
+
+CHECKOUT OPTIONS:
+  SwiftValidator:
+    :commit: 2a6c23ad9efd76127f6109445515cb9780e5ad92
+    :git: https://github.com/jpotts18/SwiftValidator.git
 
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
@@ -28,7 +48,11 @@ SPEC CHECKSUMS:
   FacebookLogin: c9d606504735780a9e3002465a615512e0a691a5
   FBSDKCoreKit: 7a6baaed4a2b2a244ba253346713bdbc74df135b
   FBSDKLoginKit: 469a56cebe2e1ed62b1621d0b155970fd6aac2d8
+  Realm: 0f5a194af0b7e6158b83db41b4ee1a00be7ddf1a
+  RealmSwift: 0eb5070d851cba7c66e841ca756d83609dc78bc8
+  SwiftSpinner: 1c80ff6ea1c47e2faa1dfce0fcd5e6b39a47fd51
+  SwiftValidator: 25ded5ca1f10c05adf57f6ac82a72d28ac8d91af
 
-PODFILE CHECKSUM: 7f0c0413c7acefcf2282f6574cb2da025b858c1a
+PODFILE CHECKSUM: 0e243a2d9c2b8ea1a9a139f6d5e23685247f9523
 
 COCOAPODS: 1.1.1
