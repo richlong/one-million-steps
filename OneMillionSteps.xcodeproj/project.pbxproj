@@ -13,14 +13,14 @@
 		445AC6421DD522BF00A20A2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 445AC6411DD522BF00A20A2E /* Assets.xcassets */; };
 		445AC6451DD522BF00A20A2E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 445AC6431DD522BF00A20A2E /* LaunchScreen.storyboard */; };
 		445AC6501DD522BF00A20A2E /* OneMillionStepsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445AC64F1DD522BF00A20A2E /* OneMillionStepsTests.swift */; };
-		445AC6601DD5238F00A20A2E /* Packet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445AC65C1DD5238F00A20A2E /* Packet.swift */; };
 		44AA8FBB1DECC07F00358068 /* UserRegistration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44AA8FB91DECC07F00358068 /* UserRegistration.storyboard */; };
-		44AA8FBD1DECC0AD00358068 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AA8FBC1DECC0AD00358068 /* LoginViewController.swift */; };
-		44AA8FBF1DEE079900358068 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AA8FBE1DEE079900358068 /* LoginViewModel.swift */; };
-		44AA8FC31DEE0C6500358068 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AA8FC21DEE0C6500358068 /* User.swift */; };
-		44AA8FC51DEE114100358068 /* EnterUserDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AA8FC41DEE114100358068 /* EnterUserDetailsViewController.swift */; };
-		44D056C51DE4E29400ECF2CE /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D056C41DE4E29400ECF2CE /* BluetoothManager.swift */; };
-		44D056C71DE4E2D200ECF2CE /* PairDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D056C61DE4E2D200ECF2CE /* PairDeviceViewController.swift */; };
+		44AA8FCC1DEF08A700358068 /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AA8FC91DEF08A700358068 /* BluetoothManager.swift */; };
+		44AA8FCD1DEF08A700358068 /* Packet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AA8FCA1DEF08A700358068 /* Packet.swift */; };
+		44AA8FCE1DEF08A700358068 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AA8FCB1DEF08A700358068 /* User.swift */; };
+		44AA8FD21DEF08B100358068 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AA8FD01DEF08B100358068 /* LoginViewController.swift */; };
+		44AA8FD31DEF08B100358068 /* PairDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AA8FD11DEF08B100358068 /* PairDeviceViewController.swift */; };
+		44AA8FD51DEF08CB00358068 /* EnterUserDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AA8FD41DEF08CB00358068 /* EnterUserDetailsViewController.swift */; };
+		44AA8FD81DEF08E400358068 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AA8FD71DEF08E400358068 /* LoginViewModel.swift */; };
 		44ECDC6E1DDA4BED0067E71F /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = 44ECDC5A1DDA4BED0067E71F /* Contents.json */; };
 		44ECDC6F1DDA4BED0067E71F /* Icon-App-20x20@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44ECDC5B1DDA4BED0067E71F /* Icon-App-20x20@1x.png */; };
 		44ECDC701DDA4BED0067E71F /* Icon-App-20x20@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44ECDC5C1DDA4BED0067E71F /* Icon-App-20x20@2x.png */; };
@@ -63,14 +63,14 @@
 		445AC64B1DD522BF00A20A2E /* OneMillionStepsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OneMillionStepsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		445AC64F1DD522BF00A20A2E /* OneMillionStepsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneMillionStepsTests.swift; sourceTree = "<group>"; };
 		445AC6511DD522BF00A20A2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		445AC65C1DD5238F00A20A2E /* Packet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Packet.swift; path = ../Packet.swift; sourceTree = "<group>"; };
 		44AA8FBA1DECC07F00358068 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/UserRegistration.storyboard; sourceTree = "<group>"; };
-		44AA8FBC1DECC0AD00358068 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = ../../OneMillionSteps/OneMillionSteps/ViewController/LoginViewController.swift; sourceTree = "<group>"; };
-		44AA8FBE1DEE079900358068 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewModel.swift; path = ../ViewModel/LoginViewModel.swift; sourceTree = "<group>"; };
-		44AA8FC21DEE0C6500358068 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = ../User.swift; sourceTree = "<group>"; };
-		44AA8FC41DEE114100358068 /* EnterUserDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterUserDetailsViewController.swift; sourceTree = "<group>"; };
-		44D056C41DE4E29400ECF2CE /* BluetoothManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BluetoothManager.swift; path = OneMillionSteps/Classes/BluetoothManager.swift; sourceTree = SOURCE_ROOT; };
-		44D056C61DE4E2D200ECF2CE /* PairDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PairDeviceViewController.swift; path = OneMillionSteps/ViewController/PairDeviceViewController.swift; sourceTree = SOURCE_ROOT; };
+		44AA8FC91DEF08A700358068 /* BluetoothManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothManager.swift; sourceTree = "<group>"; };
+		44AA8FCA1DEF08A700358068 /* Packet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Packet.swift; sourceTree = "<group>"; };
+		44AA8FCB1DEF08A700358068 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		44AA8FD01DEF08B100358068 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		44AA8FD11DEF08B100358068 /* PairDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PairDeviceViewController.swift; sourceTree = "<group>"; };
+		44AA8FD41DEF08CB00358068 /* EnterUserDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterUserDetailsViewController.swift; sourceTree = "<group>"; };
+		44AA8FD71DEF08E400358068 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		44ECDC5A1DDA4BED0067E71F /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Contents.json; sourceTree = "<group>"; };
 		44ECDC5B1DDA4BED0067E71F /* Icon-App-20x20@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-20x20@1x.png"; sourceTree = "<group>"; };
 		44ECDC5C1DDA4BED0067E71F /* Icon-App-20x20@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-20x20@2x.png"; sourceTree = "<group>"; };
@@ -153,10 +153,9 @@
 		445AC6361DD522BF00A20A2E /* OneMillionSteps */ = {
 			isa = PBXGroup;
 			children = (
-				44AA8FC21DEE0C6500358068 /* User.swift */,
-				445AC65A1DD5238F00A20A2E /* Classes */,
-				445AC65D1DD5238F00A20A2E /* ViewController */,
-				44AA8FC11DEE07A700358068 /* ViewModel */,
+				44AA8FD61DEF08E400358068 /* ViewModel */,
+				44AA8FCF1DEF08B100358068 /* ViewController */,
+				44AA8FC81DEF08A700358068 /* Classes */,
 				445AC6371DD522BF00A20A2E /* AppDelegate.swift */,
 				445AC6411DD522BF00A20A2E /* Assets.xcassets */,
 				445AC63B1DD522BF00A20A2E /* Main.storyboard */,
@@ -178,34 +177,32 @@
 			path = OneMillionStepsTests;
 			sourceTree = "<group>";
 		};
-		445AC65A1DD5238F00A20A2E /* Classes */ = {
+		44AA8FC81DEF08A700358068 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				44D056C41DE4E29400ECF2CE /* BluetoothManager.swift */,
-				445AC65C1DD5238F00A20A2E /* Packet.swift */,
+				44AA8FC91DEF08A700358068 /* BluetoothManager.swift */,
+				44AA8FCA1DEF08A700358068 /* Packet.swift */,
+				44AA8FCB1DEF08A700358068 /* User.swift */,
 			);
-			name = Classes;
-			path = ../../BluetoothTest/Classes;
+			path = Classes;
 			sourceTree = "<group>";
 		};
-		445AC65D1DD5238F00A20A2E /* ViewController */ = {
+		44AA8FCF1DEF08B100358068 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				44AA8FBC1DECC0AD00358068 /* LoginViewController.swift */,
-				44AA8FC41DEE114100358068 /* EnterUserDetailsViewController.swift */,
-				44D056C61DE4E2D200ECF2CE /* PairDeviceViewController.swift */,
+				44AA8FD01DEF08B100358068 /* LoginViewController.swift */,
+				44AA8FD11DEF08B100358068 /* PairDeviceViewController.swift */,
+				44AA8FD41DEF08CB00358068 /* EnterUserDetailsViewController.swift */,
 			);
-			name = ViewController;
-			path = ../../BluetoothTest/ViewController;
+			path = ViewController;
 			sourceTree = "<group>";
 		};
-		44AA8FC11DEE07A700358068 /* ViewModel */ = {
+		44AA8FD61DEF08E400358068 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				44AA8FBE1DEE079900358068 /* LoginViewModel.swift */,
+				44AA8FD71DEF08E400358068 /* LoginViewModel.swift */,
 			);
-			name = ViewModel;
-			path = ../../BluetoothTest/ViewController;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		44ECDC591DDA4BED0067E71F /* AppIcon.appiconset */ = {
@@ -407,15 +404,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44AA8FBD1DECC0AD00358068 /* LoginViewController.swift in Sources */,
+				44AA8FD21DEF08B100358068 /* LoginViewController.swift in Sources */,
+				44AA8FD51DEF08CB00358068 /* EnterUserDetailsViewController.swift in Sources */,
 				445AC6401DD522BF00A20A2E /* OneMillionSteps.xcdatamodeld in Sources */,
+				44AA8FD31DEF08B100358068 /* PairDeviceViewController.swift in Sources */,
+				44AA8FCC1DEF08A700358068 /* BluetoothManager.swift in Sources */,
 				445AC6381DD522BF00A20A2E /* AppDelegate.swift in Sources */,
-				44D056C51DE4E29400ECF2CE /* BluetoothManager.swift in Sources */,
-				44AA8FC31DEE0C6500358068 /* User.swift in Sources */,
-				44D056C71DE4E2D200ECF2CE /* PairDeviceViewController.swift in Sources */,
-				445AC6601DD5238F00A20A2E /* Packet.swift in Sources */,
-				44AA8FBF1DEE079900358068 /* LoginViewModel.swift in Sources */,
-				44AA8FC51DEE114100358068 /* EnterUserDetailsViewController.swift in Sources */,
+				44AA8FCE1DEF08A700358068 /* User.swift in Sources */,
+				44AA8FCD1DEF08A700358068 /* Packet.swift in Sources */,
+				44AA8FD81DEF08E400358068 /* LoginViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
