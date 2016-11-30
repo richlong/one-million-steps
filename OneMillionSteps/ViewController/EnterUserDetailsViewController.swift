@@ -11,9 +11,11 @@ import SwiftValidator
 
 class EnterUserDetailsViewController: UIViewController, ValidationDelegate {
     
+    let viewModel = EnterUserDetailsViewModel()
+    
     @IBOutlet weak var weightError: UILabel!
     @IBOutlet weak var heightError: UILabel!
-    var isImperial = true
+    var isMetric = false
 
     @IBOutlet weak var skipButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
@@ -36,20 +38,35 @@ class EnterUserDetailsViewController: UIViewController, ValidationDelegate {
         
         textFieldArray.append(contentsOf: [heightTextField,weightTextField,heightInchesTextField,weightPoundTextField])
         errorLabelArray.append(contentsOf: [weightError,heightError])
-        
-        let regexRule = RegexRule(regex: "\\d{1,}", message: "Enter valid value")
-        validator.registerField(heightTextField, errorLabel: heightError, rules: [regexRule])
-        validator.registerField(weightTextField, errorLabel: weightError, rules: [regexRule])
-
+    
         showImperial()
-        
         textFieldInitialWidth = heightTexFieldWidthConstraint.constant
     }
     
+    func addValidation(rule:RegexRule) {
+        for textField in textFieldArray {
+            validator.unregisterField(textField)
+        }
+        
+        if isMetric {
+            validator.registerField(heightTextField, rules: [rule])
+            validator.registerField(weightTextField, rules: [rule])
+        }
+        else {
+            for textField in textFieldArray {
+                validator.registerField(textField, rules: [rule])
+            }
+        }
+   
+    }
     func showMetric() {
-        isImperial = false
-        heightTextField.placeholder = "Meters"
-        weightTextField.placeholder = "Kilograms"
+        isMetric = true
+        heightTextField.placeholder = "Meters e.g. 1.70"
+        weightTextField.placeholder = "Kilograms e.g. 75.5"
+        
+        let regexRule = RegexRule(regex: "\\d{1,}\\.\\d{1,}", message: "Enter valid value")
+        addValidation(rule: regexRule)
+
         
         self.view.layoutIfNeeded()
         
@@ -68,9 +85,12 @@ class EnterUserDetailsViewController: UIViewController, ValidationDelegate {
     }
     
     func showImperial() {
-        isImperial = true
+        isMetric = false
         heightTextField.placeholder = "Feet"
         weightTextField.placeholder = "Stone"
+        
+        let regexRule = RegexRule(regex: "\\d{1,}", message: "Enter valid value")
+        addValidation(rule: regexRule)
 
         self.view.layoutIfNeeded()
         
@@ -125,16 +145,21 @@ class EnterUserDetailsViewController: UIViewController, ValidationDelegate {
     }
     
     func validationSuccessful() {
-        // submit the form
-        print("successful val")
-        
-        if isImperial {
-            let feet = heightTextField.text
-            let inches = heightInchesTextField.text
+
+        if isMetric {
+            viewModel.meters = Float(heightTextField.text!)
+            viewModel.kg = Float(weightTextField.text!)
+            viewModel.isMetric = true
         }
         else {
-            let meters = heightTextField.text
+            viewModel.feet = Int(heightTextField.text!)
+            viewModel.inches = Int(heightInchesTextField.text!)
+            viewModel.stones = Int(weightTextField.text!)
+            viewModel.pounds = Int(weightPoundTextField.text!)
+            viewModel.isMetric = false
         }
+        
+        viewModel.saveUseDetails()
     }
     
     func validationFailed(_ errors:[(Validatable ,ValidationError)]) {

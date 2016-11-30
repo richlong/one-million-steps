@@ -21,6 +21,7 @@
 		44AA8FD31DEF08B100358068 /* PairDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AA8FD11DEF08B100358068 /* PairDeviceViewController.swift */; };
 		44AA8FD51DEF08CB00358068 /* EnterUserDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AA8FD41DEF08CB00358068 /* EnterUserDetailsViewController.swift */; };
 		44AA8FD81DEF08E400358068 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AA8FD71DEF08E400358068 /* LoginViewModel.swift */; };
+		44AA8FDA1DEF097A00358068 /* EnterUserDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AA8FD91DEF097A00358068 /* EnterUserDetailsViewModel.swift */; };
 		44ECDC6E1DDA4BED0067E71F /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = 44ECDC5A1DDA4BED0067E71F /* Contents.json */; };
 		44ECDC6F1DDA4BED0067E71F /* Icon-App-20x20@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44ECDC5B1DDA4BED0067E71F /* Icon-App-20x20@1x.png */; };
 		44ECDC701DDA4BED0067E71F /* Icon-App-20x20@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44ECDC5C1DDA4BED0067E71F /* Icon-App-20x20@2x.png */; };
@@ -71,6 +72,8 @@
 		44AA8FD11DEF08B100358068 /* PairDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PairDeviceViewController.swift; sourceTree = "<group>"; };
 		44AA8FD41DEF08CB00358068 /* EnterUserDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterUserDetailsViewController.swift; sourceTree = "<group>"; };
 		44AA8FD71DEF08E400358068 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		44AA8FD91DEF097A00358068 /* EnterUserDetailsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterUserDetailsViewModel.swift; sourceTree = "<group>"; };
+		44AA8FDB1DEF1B3900358068 /* OneMillionSteps.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OneMillionSteps.entitlements; sourceTree = "<group>"; };
 		44ECDC5A1DDA4BED0067E71F /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Contents.json; sourceTree = "<group>"; };
 		44ECDC5B1DDA4BED0067E71F /* Icon-App-20x20@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-20x20@1x.png"; sourceTree = "<group>"; };
 		44ECDC5C1DDA4BED0067E71F /* Icon-App-20x20@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-20x20@2x.png"; sourceTree = "<group>"; };
@@ -153,6 +156,7 @@
 		445AC6361DD522BF00A20A2E /* OneMillionSteps */ = {
 			isa = PBXGroup;
 			children = (
+				44AA8FDB1DEF1B3900358068 /* OneMillionSteps.entitlements */,
 				44AA8FD61DEF08E400358068 /* ViewModel */,
 				44AA8FCF1DEF08B100358068 /* ViewController */,
 				44AA8FC81DEF08A700358068 /* Classes */,
@@ -201,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				44AA8FD71DEF08E400358068 /* LoginViewModel.swift */,
+				44AA8FD91DEF097A00358068 /* EnterUserDetailsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -285,6 +290,11 @@
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = D43YCHWY3Q;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					445AC64A1DD522BF00A20A2E = {
 						CreatedOnToolsVersion = 8.1;
@@ -405,6 +415,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				44AA8FD21DEF08B100358068 /* LoginViewController.swift in Sources */,
+				44AA8FDA1DEF097A00358068 /* EnterUserDetailsViewModel.swift in Sources */,
 				44AA8FD51DEF08CB00358068 /* EnterUserDetailsViewController.swift in Sources */,
 				445AC6401DD522BF00A20A2E /* OneMillionSteps.xcdatamodeld in Sources */,
 				44AA8FD31DEF08B100358068 /* PairDeviceViewController.swift in Sources */,
@@ -558,6 +569,7 @@
 			baseConfigurationReference = 4862AFC784B0656AC37A9E97 /* Pods-OneMillionSteps.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = OneMillionSteps/OneMillionSteps.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = D43YCHWY3Q;
@@ -577,6 +589,7 @@
 			baseConfigurationReference = D319DDFFB4385D3FD72CDCE4 /* Pods-OneMillionSteps.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = OneMillionSteps/OneMillionSteps.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = D43YCHWY3Q;

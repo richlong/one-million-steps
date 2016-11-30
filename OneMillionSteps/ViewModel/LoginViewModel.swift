@@ -17,19 +17,27 @@ class LoginViewModel {
     
     func saveUserInfo() {
         
-        let graphRequest:FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me",
-                                                               parameters: ["fields":"first_name,last_name,email,gender,birthday"])
-        
-        graphRequest.start(completionHandler: { (connection, result, error) -> Void in
+        if (AccessToken.current != nil) {
             
-            if ((error) != nil) {
-                print("Error: \(error)")
-            }
-            else {
-                let data:[String:AnyObject] = result as! [String : AnyObject]
-                self.saveToDatabase(userDetails: data)
-            }
-        })
+            let graphRequest:FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me",
+                                                                   parameters: ["fields":"first_name,last_name,email,gender,birthday"])
+            
+            graphRequest.start(completionHandler: { (connection, result, error) -> Void in
+                
+                if ((error) != nil) {
+                    print("Error: \(error)")
+                    NotificationCenter.default.post(name: Notification.Name("userDetailsFailed"), object: nil)
+                }
+                else {
+                    let data:[String:AnyObject] = result as! [String : AnyObject]
+                    self.saveToDatabase(userDetails: data)
+                }
+            })
+        }
+        else {
+            NotificationCenter.default.post(name: Notification.Name("userDetailsFailed"), object: nil)
+        }
+
     }
     
     func saveToDatabase(userDetails:[String : AnyObject]) {

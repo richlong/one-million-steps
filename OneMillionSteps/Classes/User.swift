@@ -15,7 +15,7 @@ class User: Object {
     dynamic var lastName = ""
     dynamic var email = ""
     dynamic var gender = ""
-    dynamic var metric:Bool = true
+    dynamic var useMetric:Bool = true
     dynamic var weight:Float = 0.0
     dynamic var height:Float = 0.0
     dynamic var birthday:Date? = nil

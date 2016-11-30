@@ -21,6 +21,9 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
         
         NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.dataSaved(notification:)), name: Notification.Name("userDetailsSaved"), object: nil)
 
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.dataFailed(notification:)), name: Notification.Name("userDetailsFailed"), object: nil)
+
+        
         
         let db = Database()
         if let user = db.getUser() {
@@ -33,6 +36,12 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
             view.addSubview(loginButton)
         }
     }
+    
+    func dataFailed(notification: Notification){
+        SwiftSpinner.hide()
+        //TODO
+    }
+
 
     func dataSaved(notification: Notification){
         SwiftSpinner.hide()
