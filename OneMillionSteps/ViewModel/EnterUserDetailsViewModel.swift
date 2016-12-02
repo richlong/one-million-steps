@@ -20,7 +20,7 @@ class EnterUserDetailsViewModel {
     var kg:Float?
     
     var isMetric = true
-
+    var date:Date?
     func convertHeight(feet:Int,inches:Int) -> Float{
         let i:Float = Float((feet * 12) + inches)
         return i * 2.54
@@ -60,12 +60,17 @@ class EnterUserDetailsViewModel {
             }
             
             if let s = stones, let p = pounds{
-                weight = convertWeight(stones:s, pounds: p)
+                weight = convertWeight(stones:s, pounds: p) / 100
             }
 
         }
         
         try! realm.write {
+            
+            if let d = date {
+                user.birthday = d
+            }
+            
             if height > 0 {
                 user.height = height
             }
@@ -76,6 +81,7 @@ class EnterUserDetailsViewModel {
             
             user.useMetric = isMetric
         }
-        
+        print(user)
+        NotificationCenter.default.post(name: Notification.Name("userDetailsSaved"), object: nil)
     }
 }

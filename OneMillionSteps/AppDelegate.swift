@@ -19,11 +19,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-
-        let mainView = UIStoryboard(name: "UserRegistration", bundle: nil)
-        self.window!.rootViewController = mainView.instantiateInitialViewController()
-
         
+        var mainView = UIStoryboard(name: "UserRegistration", bundle: nil)
+
+        let db = Database()
+        if let user = db.getUser() {
+            if user.fbAccessToken != nil {
+                mainView = UIStoryboard(name: "UserStatus", bundle: nil)
+            }
+        }
+
+        self.window!.rootViewController = mainView.instantiateInitialViewController()
         
         return true
     }

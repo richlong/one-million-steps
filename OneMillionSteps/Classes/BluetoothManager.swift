@@ -98,8 +98,8 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
                 // And connect
                 print("Connecting to peripheral \(peripheral)")
                 centralManager?.connect(peripheral, options: nil)
-                
                 delegate?.deviceFound(name: peripheral.name!)
+//                delegate?.deviceFound(name: "Device found")
             }
             else {
                 delegate?.deviceFound(name: "Unable to find device")
@@ -267,8 +267,11 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
     func processPacket(packet:[UInt8]) {
         
         let firstByte:UInt8 = packet.first!
-        
+
         switch firstByte {
+        case HexPacketPrefix.SetTime.rawValue:
+            print("Time set: \(packet)")
+            break
         case HexPacketPrefix.DaysData.rawValue:
             parseDaysDetailedData(packet: packet)
             break
@@ -282,7 +285,7 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
             parseUserDetails(packet: packet)
             break
         case HexPacketPrefix.SetUserDetails.rawValue:
-            print("SetUserDetails: \(packet)")
+            parseSetUserDetails(packet: packet)
             break
         case HexPacketPrefix.StepError.rawValue:
             print("StepError: \(packet)")
@@ -534,6 +537,10 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
         sendPacketToDevice(firstBytes:packetArray)
     }
     
+    func parseSetUserDetails(packet:[UInt8]) {
+        delegate?.userDetailsSet()
+    }
+
     
     func getUserDetails() {
         sendPacketToDevice(firstBytes:  [HexPacketPrefix.GetUserDetails.rawValue])

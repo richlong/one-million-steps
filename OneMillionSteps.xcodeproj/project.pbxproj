@@ -22,6 +22,7 @@
 		44AA8FD51DEF08CB00358068 /* EnterUserDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AA8FD41DEF08CB00358068 /* EnterUserDetailsViewController.swift */; };
 		44AA8FD81DEF08E400358068 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AA8FD71DEF08E400358068 /* LoginViewModel.swift */; };
 		44AA8FDA1DEF097A00358068 /* EnterUserDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AA8FD91DEF097A00358068 /* EnterUserDetailsViewModel.swift */; };
+		44AA8FDE1DF17CEE00358068 /* UserStatus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44AA8FDC1DF17CEE00358068 /* UserStatus.storyboard */; };
 		44ECDC6E1DDA4BED0067E71F /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = 44ECDC5A1DDA4BED0067E71F /* Contents.json */; };
 		44ECDC6F1DDA4BED0067E71F /* Icon-App-20x20@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44ECDC5B1DDA4BED0067E71F /* Icon-App-20x20@1x.png */; };
 		44ECDC701DDA4BED0067E71F /* Icon-App-20x20@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44ECDC5C1DDA4BED0067E71F /* Icon-App-20x20@2x.png */; };
@@ -74,6 +75,7 @@
 		44AA8FD71DEF08E400358068 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		44AA8FD91DEF097A00358068 /* EnterUserDetailsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterUserDetailsViewModel.swift; sourceTree = "<group>"; };
 		44AA8FDB1DEF1B3900358068 /* OneMillionSteps.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OneMillionSteps.entitlements; sourceTree = "<group>"; };
+		44AA8FDD1DF17CEE00358068 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/UserStatus.storyboard; sourceTree = "<group>"; };
 		44ECDC5A1DDA4BED0067E71F /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Contents.json; sourceTree = "<group>"; };
 		44ECDC5B1DDA4BED0067E71F /* Icon-App-20x20@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-20x20@1x.png"; sourceTree = "<group>"; };
 		44ECDC5C1DDA4BED0067E71F /* Icon-App-20x20@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-20x20@2x.png"; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 				445AC6371DD522BF00A20A2E /* AppDelegate.swift */,
 				445AC6411DD522BF00A20A2E /* Assets.xcassets */,
 				445AC63B1DD522BF00A20A2E /* Main.storyboard */,
+				44AA8FDC1DF17CEE00358068 /* UserStatus.storyboard */,
 				445AC6431DD522BF00A20A2E /* LaunchScreen.storyboard */,
 				44AA8FB91DECC07F00358068 /* UserRegistration.storyboard */,
 				445AC6461DD522BF00A20A2E /* Info.plist */,
@@ -195,8 +198,8 @@
 			isa = PBXGroup;
 			children = (
 				44AA8FD01DEF08B100358068 /* LoginViewController.swift */,
-				44AA8FD11DEF08B100358068 /* PairDeviceViewController.swift */,
 				44AA8FD41DEF08CB00358068 /* EnterUserDetailsViewController.swift */,
+				44AA8FD11DEF08B100358068 /* PairDeviceViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -345,6 +348,7 @@
 				44ECDC741DDA4BED0067E71F /* Icon-App-29x29@3x.png in Resources */,
 				445AC63D1DD522BF00A20A2E /* Main.storyboard in Resources */,
 				44ECDC6F1DDA4BED0067E71F /* Icon-App-20x20@1x.png in Resources */,
+				44AA8FDE1DF17CEE00358068 /* UserStatus.storyboard in Resources */,
 				44ECDC7F1DDA4BED0067E71F /* Icon-App-76x76@2x.png in Resources */,
 				44ECDC6E1DDA4BED0067E71F /* Contents.json in Resources */,
 				44ECDC731DDA4BED0067E71F /* Icon-App-29x29@2x.png in Resources */,
@@ -468,6 +472,14 @@
 				44AA8FBA1DECC07F00358068 /* Base */,
 			);
 			name = UserRegistration.storyboard;
+			sourceTree = "<group>";
+		};
+		44AA8FDC1DF17CEE00358068 /* UserStatus.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				44AA8FDD1DF17CEE00358068 /* Base */,
+			);
+			name = UserStatus.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

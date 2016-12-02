@@ -9,10 +9,11 @@
 import UIKit
 import SwiftValidator
 
-class EnterUserDetailsViewController: UIViewController, ValidationDelegate {
+class EnterUserDetailsViewController: UIViewController, ValidationDelegate, UITextFieldDelegate {
     
     let viewModel = EnterUserDetailsViewModel()
     
+    @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var weightError: UILabel!
     @IBOutlet weak var heightError: UILabel!
     var isMetric = false
@@ -25,27 +26,73 @@ class EnterUserDetailsViewController: UIViewController, ValidationDelegate {
     @IBOutlet weak var weightTextField: UITextField!
     @IBOutlet weak var weightPoundTextField: UITextField!
     
+    @IBOutlet weak var viewTopLayoutConstraint: NSLayoutConstraint!
     @IBOutlet weak var heightTexFieldWidthConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var weightTextFieldWidthConstraint: NSLayoutConstraint!
     let validator = Validator()
     var textFieldArray = [UITextField]()
     var errorLabelArray = [UILabel]()
-    var textFieldInitialWidth:CGFloat = 0
-
+    var textFieldInitialWidth:CGFloat = 100
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(EnterUserDetailsViewController.dataSaved(notification:)), name: NSNotification.Name(rawValue: "userDetailsSaved"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(EnterUserDetailsViewController.keyboardWillAppear(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(EnterUserDetailsViewController.keyboardWillDisappear(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+
         textFieldArray.append(contentsOf: [heightTextField,weightTextField,heightInchesTextField,weightPoundTextField])
-        errorLabelArray.append(contentsOf: [weightError,heightError])
-    
-        showImperial()
+//        errorLabelArray.append(contentsOf: [weightError,heightError])
         textFieldInitialWidth = heightTexFieldWidthConstraint.constant
+        showImperial()
+        datePicker.maximumDate = Date()
+
+        //Looks for single or multiple taps.
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(EnterUserDetailsViewController.dismissKeyboard))
+        
+        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
+        //tap.cancelsTouchesInView = false
+        
+        view.addGestureRecognizer(tap)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    
+    func keyboardWillAppear(notification: NSNotification){
+//        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+//            toggleKeyboard(position: CGFloat(0 - keyboardSize.height))
+//        }
+    }
+    
+    func keyboardWillDisappear(notification: NSNotification){
+//        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+//            toggleKeyboard(position: CGFloat(keyboardSize.height))
+//        }
+    }
+    
+    func toggleKeyboard(position:CGFloat) {
+        
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: UIViewAnimationOptions.curveEaseIn, animations: { () -> Void in
+            self.viewTopLayoutConstraint.constant += position
+            self.view.layoutIfNeeded()
+        }) { (finished) -> Void in
+        }
+        
+
     }
     
     func addValidation(rule:RegexRule) {
         for textField in textFieldArray {
             validator.unregisterField(textField)
+            textField.delegate = self
         }
         
         if isMetric {
@@ -66,22 +113,8 @@ class EnterUserDetailsViewController: UIViewController, ValidationDelegate {
         
         let regexRule = RegexRule(regex: "\\d{1,}\\.\\d{1,}", message: "Enter valid value")
         addValidation(rule: regexRule)
-
-        
-        self.view.layoutIfNeeded()
-        
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: UIViewAnimationOptions.curveEaseIn, animations: { () -> Void in
-            
-            let width = self.view.frame.width - 40
-            self.heightTexFieldWidthConstraint.constant = width;
-            self.weightTextFieldWidthConstraint.constant = width;
-
-            self.view.layoutIfNeeded()
-        }) { (finished) -> Void in
-            print("done")
-        }
-
-
+        let width = self.view.frame.width - 40
+        animateTextView(newWidth: width)
     }
     
     func showImperial() {
@@ -91,17 +124,20 @@ class EnterUserDetailsViewController: UIViewController, ValidationDelegate {
         
         let regexRule = RegexRule(regex: "\\d{1,}", message: "Enter valid value")
         addValidation(rule: regexRule)
-
+        animateTextView(newWidth: self.textFieldInitialWidth)
+    }
+    
+    func animateTextView(newWidth:CGFloat) {
+        
         self.view.layoutIfNeeded()
         
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: UIViewAnimationOptions.curveEaseIn, animations: { () -> Void in
-            self.heightTexFieldWidthConstraint.constant = self.textFieldInitialWidth;
-            self.weightTextFieldWidthConstraint.constant = self.textFieldInitialWidth;
+            self.heightTexFieldWidthConstraint.constant = newWidth;
+            self.weightTextFieldWidthConstraint.constant = newWidth;
             self.view.layoutIfNeeded()
         }) { (finished) -> Void in
-            print("done")
         }
-
+        
     }
     
     @IBAction func changeMeasurementSystem(sender: UISegmentedControl) {
@@ -133,6 +169,7 @@ class EnterUserDetailsViewController: UIViewController, ValidationDelegate {
     }
     
     @IBAction func skipButtonAction(_ sender: Any) {
+        nextView()
     }
 
     @IBAction func nextButtonAction(_ sender: Any) {
@@ -140,12 +177,18 @@ class EnterUserDetailsViewController: UIViewController, ValidationDelegate {
         validator.validate(self)
     }
     
-    func nextView() {
-        self.performSegue(withIdentifier: "nextVie", sender: nil)
-    }
-    
     func validationSuccessful() {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "ddMMYY"
 
+        let date = dateFormatter.string(from: datePicker.date)
+        let today = dateFormatter.string(from: Date())
+
+        if date != today {
+            viewModel.date = datePicker.date
+        }
+        
         if isMetric {
             viewModel.meters = Float(heightTextField.text!)
             viewModel.kg = Float(weightTextField.text!)
@@ -174,7 +217,20 @@ class EnterUserDetailsViewController: UIViewController, ValidationDelegate {
         }
     }
 
+    func dataSaved(notification: NSNotification){
+        nextView()
+    }
     
+    func nextView() {
+        self.performSegue(withIdentifier: "nextView", sender: nil)
+    }
+    
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+
+
 }
 
 

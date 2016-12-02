@@ -21,6 +21,17 @@ class User: Object {
     dynamic var birthday:Date? = nil
     dynamic var fbId: String? = nil
     dynamic var fbAccessToken: String? = nil
+    dynamic var bluetoothDeviceId: String? = nil
+    
+    func getUserAge() -> Int {
+        
+        if let birthday = self.birthday {
+            let time = Date().timeIntervalSince(birthday)
+            return Int(time) / 31556952 //Year in seconds
+        }
+        return 0
+    }
+    
 }
 
 class Database {

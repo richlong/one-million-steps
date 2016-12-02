@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreBluetooth
-//import FLEX
+import RealmSwift
 
 protocol PedometerDelegate {
     var pedometerReady:Bool {get set}
@@ -18,15 +18,17 @@ protocol PedometerDelegate {
     func monthStepsRecieved(steps:[DaySteps])
     func dayRecieved(steps: Int, day:Int)
     func deviceTimeout()
+    func userDetailsSet()
 }
 
 class PairDeviceViewController: UIViewController, PedometerDelegate {
-    
     
     internal var pedometerReady: Bool = false
     
     let bluetoothManager = BluetoothManager()
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var finishButton: UIButton!
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var deviceName: UILabel!
@@ -40,20 +42,22 @@ class PairDeviceViewController: UIViewController, PedometerDelegate {
     @IBOutlet weak var monthStepsTextView: UITextView!
     @IBOutlet weak var pairingLabel: UILabel!
     
+    var deviceIdString:String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         bluetoothManager.delegate = self
+        activityIndicator.isHidden = true
     }
     
     func deviceFound(name:String) {
         statusLabel.text = "Device found: \(name)"
         
         if let deviceIdString = bluetoothManager.discoveredPeripheral?.identifier {
-            deviceId.text = "Device ID: \(deviceIdString)"
-            deviceId.adjustsFontSizeToFitWidth = true
+            
+            self.deviceIdString = deviceIdString.uuidString
+            print("Device ID: \(deviceIdString)")
         }
-        pairingLabel.text = "Pairing..."
-        
     }
     
     func userInfoRecieved(userInfo:PedometerUserInfo) {
@@ -74,24 +78,57 @@ class PairDeviceViewController: UIViewController, PedometerDelegate {
     }
     
     internal func deviceReady() {
-        pairingLabel.text = "Paired"
+        bluetoothManager.setDeviceTime()
+        setUserDetails()
     }
     
+    func setUserDetails() {
+        let db = Database()
+        if let user = db.getUser() {
+            
+            var gender = 0
+            var stride = user.height * 0.413
+            if user.gender == "male" {
+                gender = 1
+                stride = user.height * 0.415
+            }
+            
+            bluetoothManager.setUserDetails(gender: gender,
+                                            age: user.getUserAge(),
+                                            height: Int(user.height),
+                                            weight: Int(user.weight),
+                                            strideLength: Int(stride))
+            
+            let realm = try! Realm()
+            
+            try! realm.write {
+                user.bluetoothDeviceId = deviceIdString
+            }
+        }
+    }
     
+    internal func userDetailsSet() {
+        statusLabel.text = "Device succesfully added"
+        finishButton.isHidden = false
+        activityIndicator.isHidden = true
+    }
+
     internal func dayRecieved(steps: Int, day:Int) {
-        monthStepsTextView.text.append("\nDay: \(day) Steps: \(steps)")
+//        monthStepsTextView.text.append("\nDay: \(day) Steps: \(steps)")
     }
     
     
     internal func deviceTimeout() {
+        bluetoothManager.reset()
         statusLabel.text = "Device Timeout - search again"
     }
-    
     
     
     @IBAction func searchButtonAction(_ sender: Any) {
         bluetoothManager.startScan()
         statusLabel.text = "Searching..."
+        activityIndicator.startAnimating()
+        activityIndicator.isHidden = false
     }
     
     @IBAction func getUserInfoAction(_ sender: Any) {
@@ -100,7 +137,7 @@ class PairDeviceViewController: UIViewController, PedometerDelegate {
             bluetoothManager.getUserDetails()
         }
         else {
-            userInfoLabel.text = "Device not ready"
+//            userInfoLabel.text = "Device not ready"
         }
     }
     
@@ -131,4 +168,9 @@ class PairDeviceViewController: UIViewController, PedometerDelegate {
         //        FLEXManager.shared().showExplorer()
         bluetoothManager.reset()
     }
+    
+    @IBAction func finishButtonAction(_ sender: Any) {
+        self.performSegue(withIdentifier: "userRegComplete", sender: nil)
+    }
+
 }

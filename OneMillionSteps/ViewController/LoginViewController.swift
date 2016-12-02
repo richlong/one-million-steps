@@ -23,10 +23,8 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
 
         NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.dataFailed(notification:)), name: Notification.Name("userDetailsFailed"), object: nil)
 
-        
-        
         let db = Database()
-        if let user = db.getUser() {
+        if db.getUser() != nil {
             proceedButton.isHidden = false
         }
         else {
