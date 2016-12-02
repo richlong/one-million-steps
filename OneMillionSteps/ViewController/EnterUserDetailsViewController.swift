@@ -49,7 +49,8 @@ class EnterUserDetailsViewController: UIViewController, ValidationDelegate, UITe
         textFieldArray.append(contentsOf: [heightTextField,weightTextField,heightInchesTextField,weightPoundTextField])
 //        errorLabelArray.append(contentsOf: [weightError,heightError])
         textFieldInitialWidth = heightTexFieldWidthConstraint.constant
-        showImperial()
+        showMetric()
+        unitSelector.selectedSegmentIndex = 1
         datePicker.maximumDate = Date()
 
         //Looks for single or multiple taps.

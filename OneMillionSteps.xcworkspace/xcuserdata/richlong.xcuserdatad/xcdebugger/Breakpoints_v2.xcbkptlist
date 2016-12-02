@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OneMillionSteps/ViewController/EnterUserDetailsViewController.swift"
-            timestampString = "502372633.914183"
+            timestampString = "502378565.91713"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
             landmarkName = "keyboardWillDisappear(notification:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OneMillionSteps/ViewController/EnterUserDetailsViewController.swift"
-            timestampString = "502372633.914183"
+            timestampString = "502378565.91713"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "205"
-            endingLineNumber = "205"
+            startingLineNumber = "206"
+            endingLineNumber = "206"
             landmarkName = "validationSuccessful()"
             landmarkType = "7">
          </BreakpointContent>

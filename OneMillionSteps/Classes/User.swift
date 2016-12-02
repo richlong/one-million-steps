@@ -39,7 +39,7 @@ class Database {
     let realm = try! Realm()
 
     func getUser() -> User? {
-        let user = realm.objects(User.self) // retrieves all Dogs from the default Realm
+        let user = realm.objects(User.self)
         if user.count > 0 {
             return user.first
         }
