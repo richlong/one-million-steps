@@ -35,10 +35,10 @@ class UserHomeStatusViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(UserHomeStatusViewController.stepsRecieved(notification:)), name: Notification.Name("bluetoothStepsReturned"), object: nil)
 
-//        tlSquare.addPieChart(withPercentage: 50)
-//        trSquare.addPieChart(withPercentage: 50)
-        blSquare.addPieChart(withPercentage: 50)
-//        brSquare.addPieChart(withPercentage: 50)
+        tlSquare.addPieChart(withPercentage: 0)
+        trSquare.addPieChart(withPercentage: 0)
+        blSquare.addPieChart(withPercentage: 0)
+        brSquare.addPieChart(withPercentage: 0)
         
         tlSquare.titleLabel.text = "STEPS"
         trSquare.titleLabel.text = "ACTIVE MINUTES"
@@ -49,36 +49,60 @@ class UserHomeStatusViewController: UIViewController {
         trSquare.amountLabel.text = "-"
         blSquare.amountLabel.text = "-"
         brSquare.amountLabel.text = "-"
-        
     }
     
     func stepsRecieved(notification: NSNotification){
         activityView.isHidden = true
-        tlSquare.amountLabel.text = String(viewModel.todaysSteps)
         
-        if viewModel.targetSteps > 0 {
-            let percentage:Int = (viewModel.todaysSteps / viewModel.targetSteps) * 100
-            tlSquare.addPieChart(withPercentage: percentage)
+        if let steps = viewModel.todaysSteps {
+            tlSquare.addPieChart(withPercentage: getPercentage(value: steps, total: viewModel.targetSteps!))
+            tlSquare.amountLabel.text = String(steps)
         }
+        
+        if let time = viewModel.todaysTime {
+            trSquare.addPieChart(withPercentage: getPercentage(value: time, total: viewModel.targetTime!))
+            trSquare.amountLabel.text = String(time)
+        }
+        
+        if let distance = viewModel.todaysDistance {
+            blSquare.addPieChart(withPercentage: getPercentage(value: distance, total: viewModel.targetDistance!))
+            blSquare.amountLabel.text = String(distance)
+        }
+        
+        if let calories = viewModel.todaysCalories {
+            brSquare.addPieChart(withPercentage: getPercentage(value: calories, total: viewModel.targetCalories!))
+            brSquare.amountLabel.text = String(calories)
+        }
+        
+        tlSquare.hideActivityView()
+        trSquare.hideActivityView()
+        brSquare.hideActivityView()
+        blSquare.hideActivityView()
+    }
+    
+    func getPercentage(value:Int, total:Int) -> Int {
+        let percentage:Float = (Float(value) / Float(total)) * 100.0
+        return Int(percentage)
     }
 
     @IBAction func syncButtonAction(_ sender: Any) {
         activityView.startAnimating()
         activityView.isHidden = false
+        
         viewModel.connectToPedometer()
         
-        tlSquare.addPieChart(withPercentage: 75)
+        tlSquare.showActivityView()
+        trSquare.showActivityView()
+        blSquare.showActivityView()
+        brSquare.showActivityView()
 
     }
     @IBAction func challengeButtonAction(_ sender: Any) {
-        
-        tlSquare.addPieChart(withPercentage: 25)
-        trSquare.addPieChart(withPercentage: 10)
-
+        trSquare.addPieChart(withPercentage: 20)
+        blSquare.addPieChart(withPercentage: 30)
+        brSquare.addPieChart(withPercentage: 40)
     }
     @IBAction func messageButtonAction(_ sender: Any) {
-        brSquare.addPieChart(withPercentage: 90)
-
     }
     @IBAction func fundraisingButtonAction(_ sender: Any) {
     }

@@ -15,7 +15,7 @@ protocol PedometerDelegate {
     func deviceFound(name:String)
     func deviceReady()
     func userInfoRecieved(userInfo:PedometerUserInfo)
-    func monthStepsRecieved(steps:[DaySteps])
+    func monthStepsRecieved(steps:[DaySteps],activity:[DayActivity])
     func dayRecieved(steps: Int, day:Int)
     func deviceTimeout()
     func userDetailsSet()
@@ -64,7 +64,7 @@ class PairDeviceViewController: UIViewController, PedometerDelegate {
         userInfoLabel.text = "Age: \(userInfo.age) Height: \(userInfo.height) Weight: \(userInfo.weight) Stride: \(userInfo.stridgeLength)"
     }
     
-    internal func monthStepsRecieved(steps: [DaySteps]) {
+    internal func monthStepsRecieved(steps: [DaySteps],activity:[DayActivity]) {
         
         var str = ""
         var c = 0

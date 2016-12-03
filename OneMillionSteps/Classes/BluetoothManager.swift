@@ -26,6 +26,12 @@ enum HexPacketPrefix:UInt8 {
 struct DaySteps {
     let date:String
     let steps:Int
+    let calories:Int
+}
+
+struct DayActivity {
+    let distance:Int
+    let time:Int
 }
 
 class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
@@ -46,6 +52,7 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
     var stepPacketCount:Int = 0
     var currentDay:Int = 0
     var monthSteps:[DaySteps] = []
+    var monthActivity:[DayActivity] = []
     var isRecievingStepData = false
     var currentDayRequestTotal = 0
     var isGettingSingleDay = false
@@ -335,6 +342,8 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
         stepPacketCount = 0
         currentDayStepCount = 0
         monthSteps.removeAll()
+        monthActivity.removeAll()
+
     }
     
     func getDaysData(day:Int) {
@@ -412,7 +421,7 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
         isRecievingStepData = false
         isGettingSingleDay = false
         //        print("Month array: \(monthSteps)")
-        delegate?.monthStepsRecieved(steps: monthSteps)
+        delegate?.monthStepsRecieved(steps: monthSteps,activity:monthActivity)
         
     }
     
@@ -427,14 +436,18 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
             return
         }
         
-        
         if (packet[1] == 0) { //0 = Steps
             if (packet[3] != 0 && packet[4] != 0 && packet[5] != 0) {
                 
-                let StepPacket1 = Int(packet[6]) * 256 * 256
-                let StepPacket2 = Int(packet[7]) * 256
-                let StepPacket3 = Int(packet[8])
-                let totalSteps = StepPacket1 + StepPacket2 + StepPacket3
+                let stepPacket1 = Int(packet[6]) * 256 * 256
+                let stepPacket2 = Int(packet[7]) * 256
+                let stepPacket3 = Int(packet[8])
+                let totalSteps = stepPacket1 + stepPacket2 + stepPacket3
+                
+                let calPacket1 = Int(packet[12]) * 256 * 256
+                let calPacket2 = Int(packet[13]) * 256
+                let calPacket3 = Int(packet[14])
+                let totalCalories = (calPacket1 + calPacket2 + calPacket3) / 10
                 
                 let y = String(format:"%2X", packet[3])
                 let m = String(format:"%2X", packet[4])
@@ -442,7 +455,7 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
                 
                 let date = "\(d)/\(m)/\(y)"
                 
-                let day = DaySteps(date: date, steps: totalSteps)
+                let day = DaySteps(date: date, steps: totalSteps, calories: totalCalories)
                 
                 print("Date: \(day.date) steps: \(day.steps)")
                 monthSteps.append(day)
@@ -451,15 +464,27 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
             else {
                 //No day data
                 print("Current day: \(currentDay) no step data")
-                monthSteps.append(DaySteps(date: "0", steps: 0))
+                monthSteps.append(DaySteps(date: "0", steps: 0, calories:0))
             }
-            currentDay += 1
             getDaysData(day: currentDay)
             
         }
         else if (packet[1] == 1) { //1 = Walking distance
             
-        }
+            let distancePacket1 = Int(packet[6]) * 256 * 256
+            let distancePacket2 = Int(packet[7]) * 256
+            let distancePacket3 = Int(packet[8])
+            let totaldistances = distancePacket1 + distancePacket2 + distancePacket3
+            
+            let timePacket1 = Int(packet[9]) * 256
+            let timePacket2 = Int(packet[10])
+            let totaltimes = timePacket1 + timePacket2
+            
+            monthActivity.append(DayActivity(distance: totaldistances, time: totaltimes))
+
+            currentDay += 1
+
+        }        
     }
     
     

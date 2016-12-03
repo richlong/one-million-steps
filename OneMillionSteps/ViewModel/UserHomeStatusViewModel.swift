@@ -12,8 +12,15 @@ class UserHomeStatusViewModel: PedometerDelegate {
     
     let bluetoothManager = BluetoothManager()
     var pedometerReady = false
-    var todaysSteps:Int = 0
-    var targetSteps:Int = 0
+    var todaysSteps:Int? = 0
+    var targetSteps:Int? = 2000
+    var todaysCalories:Int? = 0
+    var targetCalories:Int? = 2000
+    var todaysDistance:Int? = 0
+    var targetDistance:Int? = 2000
+    var todaysTime:Int? = 0
+    var targetTime:Int? = 60
+    
     
     init() {
         bluetoothManager.delegate = self
@@ -26,24 +33,28 @@ class UserHomeStatusViewModel: PedometerDelegate {
         
     }
     func deviceReady() {
-        bluetoothManager.get30DaysData()
         bluetoothManager.getTargetSteps()
+        bluetoothManager.getTodaysData()
     }
     func userInfoRecieved(userInfo:PedometerUserInfo) {
         
     }
-    func monthStepsRecieved(steps:[DaySteps]) {
-        print("month steps\(steps)")
-        
-        if let today = steps.first {
-//            todaysSteps = today.steps
-            todaysSteps = 2000
-        }
+    func monthStepsRecieved(steps:[DaySteps], activity:[DayActivity]) {
         
         if bluetoothManager.targetSteps > 0 {
             targetSteps = bluetoothManager.targetSteps
         }
+
+        if let today = steps.first {
+            todaysSteps = today.steps
+            todaysCalories = today.calories
+        }
         
+        if let activity = activity.first {
+            todaysDistance = activity.distance
+            todaysTime = activity.time
+        }
+
         NotificationCenter.default.post(name: Notification.Name("bluetoothStepsReturned"), object: nil)
 
     }

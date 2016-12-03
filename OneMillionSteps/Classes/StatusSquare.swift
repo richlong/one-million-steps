@@ -14,6 +14,7 @@ class StatusSquare:UIView {
     let titleLabel:UILabel = UILabel()
     let amountLabel:UILabel = UILabel()
     let imageView:UIImageView = UIImageView()
+    internal let activityView = UIActivityIndicatorView()
     var chartView:PieChart? = nil
     
     override init (frame : CGRect) {
@@ -26,9 +27,35 @@ class StatusSquare:UIView {
         addTitleLabelConstraints()
         addAmountLabelConstraints()
         addImageViewConstraints()
-
+        addActivityView()
         self.titleLabel.text = "Title"
         self.amountLabel.text = "Title"
+    }
+    
+    internal func addActivityView() {
+        
+        activityView.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(activityView)
+
+        // center titleLabel horizontally in self.view
+        self.addConstraint(NSLayoutConstraint(item: activityView, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: NSLayoutAttribute.centerX, multiplier: 1.0, constant: 0.0));
+        
+        
+        // center titleLabel vertically in self.view
+        self.addConstraint(NSLayoutConstraint(item: activityView, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: NSLayoutAttribute.centerY, multiplier: 1.0, constant: 0.0));
+        
+        activityView.isHidden = true
+
+    }
+    
+    func showActivityView() {
+        activityView.isHidden = false
+        activityView.startAnimating()
+    }
+    
+    func hideActivityView() {
+        activityView.isHidden = true
+        activityView.stopAnimating()
     }
     
     func addPieChart(withPercentage:Int) {
@@ -52,38 +79,6 @@ class StatusSquare:UIView {
         // align titleLabel from the top
         self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-10-[view]-10-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["view": chart]));
 
-
-//        chartView.translatesAutoresizingMaskIntoConstraints = false
-//        self.addSubview(chartView)
-//        
-//        chartView.backgroundColor = UIColor.white
-//        
-//        let centreX = (self.frame.size.width) / 2
-//        let centreY = (self.frame.size.height) / 2
-//
-//        let endAngle = (CGFloat(M_PI * 2) / 100) * CGFloat(withPercentage)
-//        let circlePath = UIBezierPath(arcCenter: CGPoint(x: -centreY,y: centreX),
-//                                      radius: CGFloat(50),
-//                                      startAngle: CGFloat(0),
-//                                      endAngle:endAngle,
-//                                      clockwise: true)
-//        
-//        let shapeLayer = CAShapeLayer()
-//        shapeLayer.path = circlePath.cgPath
-//        
-//        //change the fill color
-//        shapeLayer.fillColor = UIColor.clear.cgColor
-//        //you can change the stroke color
-//        shapeLayer.strokeColor = UIColor.white.cgColor
-//        //you can change the line width
-//        shapeLayer.lineWidth = 20.0
-//        
-//        self.chartView.layer.addSublayer(shapeLayer)
-//        
-//        //Rotate view to start at 12 o'clock
-//        let degrees = CGFloat(270) * CGFloat(M_PI/180)  //the value in degrees
-//        chartView.transform = CGAffineTransform(rotationAngle: degrees)
-        
     }
     
     internal func addTitleLabelConstraints() {
