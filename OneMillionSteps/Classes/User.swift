@@ -22,7 +22,12 @@ class User: Object {
     dynamic var fbId: String? = nil
     dynamic var fbAccessToken: String? = nil
     dynamic var bluetoothDeviceId: String? = nil
-    
+    dynamic var targetSteps:Int = 10000
+    dynamic var targetDistance:Int = 100
+    dynamic var targetTime:Int = 60
+    dynamic var targetCalories:Int = 2000
+
+    //Returns years
     func getUserAge() -> Int {
         
         if let birthday = self.birthday {

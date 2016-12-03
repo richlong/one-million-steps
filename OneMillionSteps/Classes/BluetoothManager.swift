@@ -484,7 +484,7 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
 
             currentDay += 1
 
-        }        
+        }
     }
     
     

@@ -29,8 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
 
-        mainView = UIStoryboard(name: "UserStatus", bundle: nil)
-
         self.window!.rootViewController = mainView.instantiateInitialViewController()
         
         return true

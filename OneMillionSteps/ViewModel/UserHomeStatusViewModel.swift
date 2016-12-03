@@ -61,7 +61,8 @@ class UserHomeStatusViewModel: PedometerDelegate {
     func dayRecieved(steps: Int, day:Int) {
     }
     func deviceTimeout() {
-        
+        bluetoothManager.reset()
+        NotificationCenter.default.post(name: Notification.Name("bluetoothError"), object: nil)
     }
     func userDetailsSet() {
         

@@ -27,6 +27,8 @@ class UserHomeStatusViewController: UIViewController {
 
         trSquare.titleLabel.textAlignment = .right
         brSquare.titleLabel.textAlignment = .right
+        
+        navigationController?.navigationBar.topItem?.title = "One Million Steps"
 
     }
     
@@ -34,6 +36,9 @@ class UserHomeStatusViewController: UIViewController {
         super.viewDidAppear(true)
         
         NotificationCenter.default.addObserver(self, selector: #selector(UserHomeStatusViewController.stepsRecieved(notification:)), name: Notification.Name("bluetoothStepsReturned"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(UserHomeStatusViewController.bluetoothError(notification:)), name: Notification.Name("bluetoothError"), object: nil)
+
 
         tlSquare.addPieChart(withPercentage: 0)
         trSquare.addPieChart(withPercentage: 0)
@@ -51,6 +56,10 @@ class UserHomeStatusViewController: UIViewController {
         brSquare.amountLabel.text = "-"
     }
     
+    func bluetoothError(notification: NSNotification){
+        //TODO
+    }
+
     func stepsRecieved(notification: NSNotification){
         activityView.isHidden = true
         

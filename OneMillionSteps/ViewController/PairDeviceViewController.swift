@@ -111,6 +111,8 @@ class PairDeviceViewController: UIViewController, PedometerDelegate {
         statusLabel.text = "Device succesfully added"
         finishButton.isHidden = false
         activityIndicator.isHidden = true
+        bluetoothManager.reset()
+
     }
 
     internal func dayRecieved(steps: Int, day:Int) {
