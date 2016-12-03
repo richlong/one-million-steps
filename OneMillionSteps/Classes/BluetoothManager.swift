@@ -20,6 +20,7 @@ enum HexPacketPrefix:UInt8 {
     case GetCurrentActivityData = 0x48
     case StepError = 0xC3
     case GetTotalActivityForDay = 0x07
+    case GetTargetSteps = 0x4B
 }
 
 struct DaySteps {
@@ -49,7 +50,7 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
     var currentDayRequestTotal = 0
     var isGettingSingleDay = false
     var timeOut:Timer = Timer()
-    
+    var targetSteps = 0
     func startScan() {
         centralManager = CBCentralManager(delegate: self, queue: nil)
     }
@@ -294,6 +295,9 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
         case HexPacketPrefix.GetTotalActivityForDay.rawValue:
             parseDaysData(packet: packet)
             break
+        case HexPacketPrefix.GetTargetSteps.rawValue:
+            parseTargetSteps(packet: packet)
+            break
             
         default:
             print("Packet unknown: \(packet)")
@@ -416,7 +420,7 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
     
     func parseDaysData(packet:[UInt8]) {
         
-        print("TotalActivity: \(packet)")
+//        print("TotalActivity: \(packet)")
         
         if currentDay > currentDayRequestTotal {
             getStepsFinished()
@@ -563,6 +567,27 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
     func getCurrentActivityData() {
         sendPacketToDevice(firstBytes:  [HexPacketPrefix.GetCurrentActivityData.rawValue])
     }
+    
+    //MARK: GetTargetSteps
+    
+    func getTargetSteps() {
+        sendPacketToDevice(firstBytes:  [HexPacketPrefix.GetTargetSteps.rawValue])
+    }
+    
+    func parseTargetSteps(packet:[UInt8]) {
+        
+        let packetArray = Packet.convertPacketToIntArray(packet: packet)
+        
+        print(packetArray)
+        
+
+        let a = Int(packet[1])*256*256
+        let b = Int(packet[2])*256
+        let c = Int(packet[3])
+        let target = Int(a+b+c)
+        targetSteps = target
+    }
+
     
     
     //MARK:Factory Reset
