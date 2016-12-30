@@ -29,7 +29,6 @@ class User: Object {
 
     //Returns years
     func getUserAge() -> Int {
-        
         if let birthday = self.birthday {
             let time = Date().timeIntervalSince(birthday)
             return Int(time) / 31556952 //Year in seconds
@@ -37,6 +36,14 @@ class User: Object {
         return 0
     }
     
+}
+
+class DayData: Object {
+    dynamic let date:Date? = nil
+    dynamic var totalSteps:Int = 0
+    dynamic var totalDistance:Int = 0
+    dynamic var totalTime:Int = 0
+    dynamic var totalCalories:Int = 0
 }
 
 class Database {
@@ -50,4 +57,13 @@ class Database {
         }
         return nil
     }
+    
+    func getData(forDay:Date) -> User? {
+        let user = realm.objects(DayData.self)
+        if user.count > 0 {
+//            return user.first
+        }
+        return nil
+    }
+
 }

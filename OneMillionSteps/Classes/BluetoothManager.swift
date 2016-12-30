@@ -447,7 +447,7 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
                 let calPacket1 = Int(packet[12]) * 256 * 256
                 let calPacket2 = Int(packet[13]) * 256
                 let calPacket3 = Int(packet[14])
-                let totalCalories = (calPacket1 + calPacket2 + calPacket3) / 10
+                let totalCalories = (calPacket1 + calPacket2 + calPacket3) / 100
                 
                 let y = String(format:"%2X", packet[3])
                 let m = String(format:"%2X", packet[4])

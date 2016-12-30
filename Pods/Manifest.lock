@@ -20,6 +20,7 @@ PODS:
     - Bolts (~> 1.7)
   - FBSDKLoginKit (4.18.0):
     - FBSDKCoreKit
+  - FontAwesomeKit.Swift (0.2.0)
   - Realm (2.1.0):
     - Realm/Headers (= 2.1.0)
   - Realm/Headers (2.1.0)
@@ -32,6 +33,7 @@ DEPENDENCIES:
   - Charts (~> 3.0)
   - FacebookCore
   - FacebookLogin
+  - FontAwesomeKit.Swift
   - RealmSwift
   - SwiftSpinner
   - SwiftValidator (from `https://github.com/jpotts18/SwiftValidator.git`, branch `master`)
@@ -53,11 +55,12 @@ SPEC CHECKSUMS:
   FacebookLogin: c9d606504735780a9e3002465a615512e0a691a5
   FBSDKCoreKit: 15fef8804a4629f98c6f4e55e81a76c9d725d85e
   FBSDKLoginKit: 6773073e970b2b15fb12e451ce7f11da0532b880
+  FontAwesomeKit.Swift: 56a4aa7b7ce7b78d9c38d343607e699079e25298
   Realm: bc829ad0ef3d4eea70c34cfcc3b1704d18d50df1
   RealmSwift: a4d4abbf0088c337cab5b738054395842e4b3052
   SwiftSpinner: c03815614599b91eea46594bd52ba742849d0414
   SwiftValidator: 25ded5ca1f10c05adf57f6ac82a72d28ac8d91af
 
-PODFILE CHECKSUM: 48ba8f92d698650355bb97481f08fe6d8e826707
+PODFILE CHECKSUM: bedb99cf85fde3616b589219db94f04e0e977bb6
 
 COCOAPODS: 1.1.1

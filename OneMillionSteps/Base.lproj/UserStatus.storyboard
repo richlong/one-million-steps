@@ -34,20 +34,23 @@
                                         <color key="backgroundColor" red="0.90301531553268433" green="0.33727511763572693" blue="0.4737774133682251" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qMc-Sf-LfE" customClass="StatusSquare" customModule="OneMillionSteps" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="187.5" width="188" height="187.5"/>
+                                        <rect key="frame" x="0.0" y="187.5" width="187.5" height="187.5"/>
                                         <color key="backgroundColor" red="0.91792130470275879" green="0.76529389619827271" blue="0.30575865507125854" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gfY-Md-fMu" customClass="StatusSquare" customModule="OneMillionSteps" customModuleProvider="target">
                                         <rect key="frame" x="187.5" y="187.5" width="187.5" height="187.5"/>
                                         <color key="backgroundColor" red="0.34530335664749146" green="0.85201013088226318" blue="0.60097473859786987" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1hR-W4-VvQ">
-                                        <rect key="frame" x="162" y="162" width="50" height="50"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1hR-W4-VvQ">
+                                        <rect key="frame" x="157" y="157" width="60" height="60"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="50" id="5mm-uf-afb"/>
-                                            <constraint firstAttribute="height" constant="50" id="fea-dS-4dW"/>
+                                            <constraint firstAttribute="width" constant="60" id="5mm-uf-afb"/>
+                                            <constraint firstAttribute="height" constant="60" id="fea-dS-4dW"/>
                                         </constraints>
+                                        <state key="normal">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
                                         <connections>
                                             <action selector="syncButtonAction:" destination="LkJ-YH-7oT" eventType="touchUpInside" id="nD9-bv-62B"/>
                                         </connections>
@@ -83,7 +86,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QEu-kR-UjY" customClass="StatusViewButton" customModule="OneMillionSteps" customModuleProvider="target">
-                                <rect key="frame" x="-1" y="438" width="377" height="60"/>
+                                <rect key="frame" x="-1" y="438" width="377" height="60.5"/>
                                 <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="Challenges">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -103,7 +106,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Shu-89-XB4" customClass="StatusViewButton" customModule="OneMillionSteps" customModuleProvider="target">
-                                <rect key="frame" x="-1" y="497" width="377" height="60.5"/>
+                                <rect key="frame" x="-1" y="497.5" width="377" height="60"/>
                                 <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="Messages">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -157,6 +160,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="bz2-qh-QXb" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="tik-NV-Rty">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
@@ -174,7 +178,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QRW-lv-M14" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="AVt-tS-Jni"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="zds-fi-qcP">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="zds-fi-qcP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

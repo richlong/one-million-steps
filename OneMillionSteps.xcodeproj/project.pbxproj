@@ -28,6 +28,7 @@
 		44AA8FE41DF1BB1D00358068 /* StatusSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AA8FE31DF1BB1D00358068 /* StatusSquare.swift */; };
 		44AA8FE71DF1E46700358068 /* StatusViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AA8FE61DF1E46700358068 /* StatusViewButton.swift */; };
 		44AA8FE91DF2009F00358068 /* PieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AA8FE81DF2009F00358068 /* PieChart.swift */; };
+		44AA8FEB1DF3020000358068 /* DataSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AA8FEA1DF3020000358068 /* DataSync.swift */; };
 		44ECDC6E1DDA4BED0067E71F /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = 44ECDC5A1DDA4BED0067E71F /* Contents.json */; };
 		44ECDC6F1DDA4BED0067E71F /* Icon-App-20x20@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44ECDC5B1DDA4BED0067E71F /* Icon-App-20x20@1x.png */; };
 		44ECDC701DDA4BED0067E71F /* Icon-App-20x20@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44ECDC5C1DDA4BED0067E71F /* Icon-App-20x20@2x.png */; };
@@ -86,6 +87,7 @@
 		44AA8FE31DF1BB1D00358068 /* StatusSquare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusSquare.swift; sourceTree = "<group>"; };
 		44AA8FE61DF1E46700358068 /* StatusViewButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusViewButton.swift; sourceTree = "<group>"; };
 		44AA8FE81DF2009F00358068 /* PieChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChart.swift; sourceTree = "<group>"; };
+		44AA8FEA1DF3020000358068 /* DataSync.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSync.swift; sourceTree = "<group>"; };
 		44ECDC5A1DDA4BED0067E71F /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Contents.json; sourceTree = "<group>"; };
 		44ECDC5B1DDA4BED0067E71F /* Icon-App-20x20@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-20x20@1x.png"; sourceTree = "<group>"; };
 		44ECDC5C1DDA4BED0067E71F /* Icon-App-20x20@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-20x20@2x.png"; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 		44AA8FC81DEF08A700358068 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				44AA8FEA1DF3020000358068 /* DataSync.swift */,
 				44AA8FE81DF2009F00358068 /* PieChart.swift */,
 				44AA8FE31DF1BB1D00358068 /* StatusSquare.swift */,
 				44AA8FC91DEF08A700358068 /* BluetoothManager.swift */,
@@ -433,6 +436,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44AA8FEB1DF3020000358068 /* DataSync.swift in Sources */,
 				44AA8FE21DF1B94500358068 /* UserHomeStatusViewModel.swift in Sources */,
 				44AA8FD21DEF08B100358068 /* LoginViewController.swift in Sources */,
 				44AA8FDA1DEF097A00358068 /* EnterUserDetailsViewModel.swift in Sources */,
@@ -603,7 +607,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = OneMillionSteps/OneMillionSteps.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = D43YCHWY3Q;
 				INFOPLIST_FILE = OneMillionSteps/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -623,7 +627,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = OneMillionSteps/OneMillionSteps.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = D43YCHWY3Q;
 				INFOPLIST_FILE = OneMillionSteps/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

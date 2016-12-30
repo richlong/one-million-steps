@@ -11,6 +11,7 @@ import UIKit
 
 class StatusSquare:UIView {
     
+    let iconLabel:UILabel = UILabel()
     let titleLabel:UILabel = UILabel()
     let amountLabel:UILabel = UILabel()
     let imageView:UIImageView = UIImageView()
@@ -28,6 +29,7 @@ class StatusSquare:UIView {
         addAmountLabelConstraints()
         addImageViewConstraints()
         addActivityView()
+        addIconLabel()
         self.titleLabel.text = "Title"
         self.amountLabel.text = "Title"
     }
@@ -47,6 +49,30 @@ class StatusSquare:UIView {
         activityView.isHidden = true
 
     }
+    
+    internal func addIconLabel() {
+        
+        iconLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(iconLabel)
+        iconLabel.font = UIFont(fa_fontSize: 50)
+        iconLabel.textColor = UIColor.white
+        iconLabel.textAlignment = .center
+
+        // center titleLabel horizontally in self.view
+        self.addConstraint(NSLayoutConstraint(item: iconLabel, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: NSLayoutAttribute.centerX, multiplier: 1.0, constant: 0.0));
+        
+        
+        // center titleLabel vertically in self.view
+        self.addConstraint(NSLayoutConstraint(item: iconLabel, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: NSLayoutAttribute.centerY, multiplier: 1.0, constant: 0.0));
+        
+        // align titleLabel from the left
+        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:[view(50)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["view": iconLabel]));
+        
+        // align titleLabel from the top
+        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[view(50)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["view": iconLabel]));
+
+    }
+
     
     func showActivityView() {
         activityView.isHidden = false

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FontAwesomeKit_Swift
 
 class UserHomeStatusViewController: UIViewController {
     @IBOutlet weak var tlSquare: StatusSquare!
@@ -39,7 +40,6 @@ class UserHomeStatusViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(UserHomeStatusViewController.bluetoothError(notification:)), name: Notification.Name("bluetoothError"), object: nil)
 
-
         tlSquare.addPieChart(withPercentage: 0)
         trSquare.addPieChart(withPercentage: 0)
         blSquare.addPieChart(withPercentage: 0)
@@ -54,6 +54,25 @@ class UserHomeStatusViewController: UIViewController {
         trSquare.amountLabel.text = "-"
         blSquare.amountLabel.text = "-"
         brSquare.amountLabel.text = "-"
+        
+        trSquare.iconLabel.fa_text = .fa_clock_o
+        trSquare.iconLabel.font = UIFont(fa_fontSize: 50)
+        
+        blSquare.iconLabel.fa_text = .fa_arrows_h
+        blSquare.iconLabel.font = UIFont(fa_fontSize: 50)
+
+        brSquare.iconLabel.fa_text = .fa_fire
+        brSquare.iconLabel.font = UIFont(fa_fontSize: 50)
+        
+        styleButton()
+
+    }
+    
+    func styleButton() {
+        syncButton.layer.cornerRadius = 0.5 * syncButton.bounds.size.width
+        syncButton.clipsToBounds = true
+        syncButton.fa_setTitle(.fa_refresh, for: .normal)
+        syncButton.titleLabel?.font = UIFont(fa_fontSize: 40)
     }
     
     func bluetoothError(notification: NSNotification){

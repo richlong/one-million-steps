@@ -14,6 +14,7 @@ target 'OneMillionSteps' do
     pod 'SwiftSpinner'
     pod 'SwiftValidator', :git => 'https://github.com/jpotts18/SwiftValidator.git', :branch => 'master'
     pod 'Charts', '~> 3.0'
+    pod 'FontAwesomeKit.Swift'
 end
 
 
