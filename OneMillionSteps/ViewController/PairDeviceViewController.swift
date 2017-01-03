@@ -16,7 +16,7 @@ protocol PedometerDelegate {
     func deviceReady()
     func userInfoRecieved(userInfo:PedometerUserInfo)
     func monthStepsRecieved(steps:[DaySteps],activity:[DayActivity])
-    func dayRecieved(steps: Int, day:Int)
+    func singleDayStepsRecieved(steps:[DaySteps],activity:[DayActivity])
     func deviceTimeout()
     func userDetailsSet()
 }
@@ -75,6 +75,10 @@ class PairDeviceViewController: UIViewController, PedometerDelegate {
         
         monthStepsTextView.text = str
         
+    }
+    
+    internal func singleDayStepsRecieved(steps: [DaySteps], activity: [DayActivity]) {
+
     }
     
     internal func deviceReady() {

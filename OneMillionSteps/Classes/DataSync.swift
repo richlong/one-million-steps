@@ -23,13 +23,26 @@ class PastDataSync {
         var c = 0
         for day in monthSteps {
             
-            let day = DayData()
+            let dayData = DayData()
+
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd/MM/yy"
+            if let date:Date = dateFormatter.date(from: day.date) {
+                dayData.date = date
+            }
+
+            dayData.totalSteps = day.steps
+            dayData.totalCalories = day.calories
+            
+            let dayActivity = monthActivity[c]
+            dayData.totalDistance = dayActivity.distance
+            dayData.totalTime = dayActivity.time
             
             c += 1
             
             let realm = try! Realm()
             try! realm.write {
-                realm.add(day)
+                realm.add(dayData)
             }
         }
         

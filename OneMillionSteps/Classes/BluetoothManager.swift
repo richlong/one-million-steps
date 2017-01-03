@@ -418,10 +418,17 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
     
     func getStepsFinished() {
         timeOut.invalidate()
+        //        print("Month array: \(monthSteps)")
+        
+        if isGettingSingleDay {
+            delegate?.singleDayStepsRecieved(steps: monthSteps,activity:monthActivity)
+        }
+        else {
+            delegate?.monthStepsRecieved(steps: monthSteps,activity:monthActivity)
+        }
+        
         isRecievingStepData = false
         isGettingSingleDay = false
-        //        print("Month array: \(monthSteps)")
-        delegate?.monthStepsRecieved(steps: monthSteps,activity:monthActivity)
         
     }
     
@@ -486,8 +493,6 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
 
         }
     }
-    
-    
     
     //MARK: Device time
     

@@ -35,17 +35,21 @@ class UserHomeStatusViewModel: PedometerDelegate {
     func deviceReady() {
         bluetoothManager.getTargetSteps()
         bluetoothManager.getTodaysData()
-//        bluetoothManager.get30DaysData()
     }
     func userInfoRecieved(userInfo:PedometerUserInfo) {
         
     }
     func monthStepsRecieved(steps:[DaySteps], activity:[DayActivity]) {
+        let data = PastDataSync(withMonthSteps: steps, monthActivity: activity)
+        data.syncData()
+    }
+    
+    internal func singleDayStepsRecieved(steps: [DaySteps], activity: [DayActivity]) {
         
         if bluetoothManager.targetSteps > 0 {
             targetSteps = bluetoothManager.targetSteps
         }
-
+        
         if let today = steps.first {
             todaysSteps = today.steps
             todaysCalories = today.calories
@@ -56,12 +60,12 @@ class UserHomeStatusViewModel: PedometerDelegate {
             todaysTime = activity.time
         }
         
-        let data = PastDataSync(withMonthSteps: steps, monthActivity: activity)
-        data.syncData()
+        bluetoothManager.get30DaysData()
 
         NotificationCenter.default.post(name: Notification.Name("bluetoothStepsReturned"), object: nil)
 
     }
+
     func dayRecieved(steps: Int, day:Int) {
     }
     func deviceTimeout() {
@@ -69,7 +73,6 @@ class UserHomeStatusViewModel: PedometerDelegate {
         NotificationCenter.default.post(name: Notification.Name("bluetoothError"), object: nil)
     }
     func userDetailsSet() {
-        
     }
 
 }

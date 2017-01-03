@@ -39,7 +39,7 @@ class User: Object {
 }
 
 class DayData: Object {
-    dynamic let date:Date? = nil
+    dynamic var date:Date? = nil
     dynamic var totalSteps:Int = 0
     dynamic var totalDistance:Int = 0
     dynamic var totalTime:Int = 0
