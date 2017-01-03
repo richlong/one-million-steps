@@ -343,7 +343,6 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
         currentDayStepCount = 0
         monthSteps.removeAll()
         monthActivity.removeAll()
-
     }
     
     func getDaysData(day:Int) {
@@ -429,7 +428,6 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
         
         isRecievingStepData = false
         isGettingSingleDay = false
-        
     }
     
     //MARK: Total activity
