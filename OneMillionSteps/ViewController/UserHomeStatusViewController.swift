@@ -8,6 +8,7 @@
 
 import UIKit
 import FontAwesomeKit_Swift
+import Toast_Swift
 
 class UserHomeStatusViewController: UIViewController {
     @IBOutlet weak var tlSquare: StatusSquare!
@@ -76,7 +77,7 @@ class UserHomeStatusViewController: UIViewController {
     }
     
     func bluetoothError(notification: NSNotification){
-        //TODO
+        self.view.makeToast("Unable to connect to pedometer", duration: 5.0, position: .top)
     }
 
     func stepsRecieved(notification: NSNotification){

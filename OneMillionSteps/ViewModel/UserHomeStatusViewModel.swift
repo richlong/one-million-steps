@@ -34,8 +34,8 @@ class UserHomeStatusViewModel: PedometerDelegate {
     }
     func deviceReady() {
         bluetoothManager.getTargetSteps()
-//        bluetoothManager.getTodaysData()
-        bluetoothManager.get30DaysData()
+        bluetoothManager.getTodaysData()
+//        bluetoothManager.get30DaysData()
     }
     func userInfoRecieved(userInfo:PedometerUserInfo) {
         
@@ -57,7 +57,8 @@ class UserHomeStatusViewModel: PedometerDelegate {
         }
         
         let data = PastDataSync(withMonthSteps: steps, monthActivity: activity)
-        
+        data.syncData()
+
         NotificationCenter.default.post(name: Notification.Name("bluetoothStepsReturned"), object: nil)
 
     }

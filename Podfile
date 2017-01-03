@@ -15,6 +15,7 @@ target 'OneMillionSteps' do
     pod 'SwiftValidator', :git => 'https://github.com/jpotts18/SwiftValidator.git', :branch => 'master'
     pod 'Charts', '~> 3.0'
     pod 'FontAwesomeKit.Swift'
+    pod 'Toast-Swift', '~> 2.0.0'
 end
 
 

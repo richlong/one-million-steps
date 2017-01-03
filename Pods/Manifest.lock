@@ -28,6 +28,7 @@ PODS:
     - Realm (= 2.1.0)
   - SwiftSpinner (1.1.0)
   - SwiftValidator (4.0.0)
+  - Toast-Swift (2.0.0)
 
 DEPENDENCIES:
   - Charts (~> 3.0)
@@ -37,6 +38,7 @@ DEPENDENCIES:
   - RealmSwift
   - SwiftSpinner
   - SwiftValidator (from `https://github.com/jpotts18/SwiftValidator.git`, branch `master`)
+  - Toast-Swift (~> 2.0.0)
 
 EXTERNAL SOURCES:
   SwiftValidator:
@@ -60,7 +62,8 @@ SPEC CHECKSUMS:
   RealmSwift: a4d4abbf0088c337cab5b738054395842e4b3052
   SwiftSpinner: c03815614599b91eea46594bd52ba742849d0414
   SwiftValidator: 25ded5ca1f10c05adf57f6ac82a72d28ac8d91af
+  Toast-Swift: 5b2f8f720f7e78e48511f693df1f9c9a6e38a25a
 
-PODFILE CHECKSUM: bedb99cf85fde3616b589219db94f04e0e977bb6
+PODFILE CHECKSUM: 9fa6df44100d3fe84a6f2f0c34756e1053b032b9
 
 COCOAPODS: 1.1.1
